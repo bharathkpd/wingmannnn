@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { X, ShieldCheck, FileText, Cookie } from "lucide-react";
+import { X, ShieldCheck, FileText } from "lucide-react";
 
-export type LegalDocType = "privacy" | "terms" | "cookies";
+export type LegalDocType = "privacy" | "terms";
 
 interface LegalModalProps {
   type: LegalDocType | null;
@@ -57,25 +57,6 @@ export function LegalModal({ type, onClose }: LegalModalProps) {
         {
           heading: "4. Intellectual Property",
           body: "All trademarks, visual assets, editorial text, and interaction designs on this site are protected property of Wingmann. Unauthorized reproduction is strictly prohibited.",
-        },
-      ],
-    },
-    cookies: {
-      title: "Cookie Policy",
-      subtitle: "Transparent disclosure on local storage and site cookies",
-      icon: Cookie,
-      sections: [
-        {
-          heading: "1. Essential Cookies",
-          body: "These cookies are strictly required to ensure core functionality, security, and persistence of your consent preferences. They do not store personally identifiable marketing information.",
-        },
-        {
-          heading: "2. Analytical Cookies (Optional)",
-          body: "When enabled, aggregate metrics help our design team understand navigation flows and optimize page performance. No invasive cross-site behavioral tracking is performed.",
-        },
-        {
-          heading: "3. Managing Your Preferences",
-          body: "You can adjust your cookie settings at any time using the 'Cookie Settings' link in the footer or by selecting 'Manage Preferences' in the cookie banner.",
         },
       ],
     },

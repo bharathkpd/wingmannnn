@@ -33,14 +33,14 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
       zIndex: 1,
     },
     {
-      img: "/images/hero-2.jpg",
+      img: "/images/vignette-6-familiar.jpg",
       caption: "Shared Intentions",
       tag: "Hyderabad",
       rotation: 3,
       zIndex: 2,
     },
     {
-      img: "/images/hero-3.jpg",
+      img: "/images/cinematic-coffee.jpg",
       caption: "Real Encounters",
       tag: "Evening Café",
       rotation: -1,
@@ -74,7 +74,7 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="relative min-h-[100svh] flex flex-col justify-between pt-20 sm:pt-28 md:pt-36 pb-8 sm:pb-12 px-4 sm:px-8 md:px-10 overflow-hidden bg-[#F7F2ED]"
+      className="relative min-h-[100svh] flex flex-col justify-between pt-16 sm:pt-28 md:pt-36 pb-6 sm:pb-12 px-4 sm:px-8 md:px-10 overflow-hidden bg-[#F7F2ED]"
     >
       {/* Subtle Ambient Lighting */}
       <div
@@ -84,32 +84,26 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
 
       <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center my-auto">
         {/* Left Column: Brand Statement & Editorial Typography */}
-        <div className="lg:col-span-7 flex flex-col items-start space-y-4 sm:space-y-6 md:space-y-8 z-10 text-left">
-          {/* Masthead Lockup */}
+        <div className="lg:col-span-7 flex flex-col items-start space-y-3.5 sm:space-y-6 md:space-y-8 z-10 text-left">
+          {/* Masthead Eyebrow: Pure editorial luxury without duplicate brand repetition */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col gap-1"
+            className="flex items-center gap-2 text-[10px] sm:text-xs tracking-[0.22em] font-sans font-semibold uppercase text-[#7B4F87]"
           >
-            <div className="flex items-center gap-2 sm:gap-2.5 text-[10.5px] sm:text-[11px] tracking-[0.24em] font-sans font-bold uppercase text-[#7B4F87]">
-              <span className="font-serif text-[#552C61] tracking-wider text-xs sm:text-sm font-semibold">WINGMANN</span>
-              <span className="w-1 h-1 rounded-full bg-[#CC0000]" />
-              <span>DATE WITH INTENT</span>
-            </div>
-            <div className="inline-flex items-center gap-2 text-[9.5px] sm:text-[10px] md:text-[11px] tracking-[0.16em] uppercase text-[#2B2B2B]/70 font-medium">
-              <span>For people who know what they&apos;re here for</span>
-            </div>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#CC0000] shrink-0" />
+            <span>For people who know what they&apos;re here for</span>
           </motion.div>
 
           {/* Main Headline */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-2 max-w-xl"
+            transition={{ duration: 0.6, delay: 0.08 }}
+            className="space-y-1.5 max-w-xl"
           >
-            <h1 className="font-serif text-[clamp(2.15rem,6.2vw,4.8rem)] font-light leading-[1.05] tracking-[-0.025em] text-[#552C61] [text-wrap:balance]">
+            <h1 className="font-serif text-[clamp(2.1rem,6.8vw,4.8rem)] font-light leading-[1.08] sm:leading-[1.04] tracking-[-0.025em] text-[#552C61]">
               Find someone who is looking for the{" "}
               <span className="italic font-serif font-normal text-[#CC0000] relative inline-block">
                 same thing.
@@ -118,74 +112,77 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
           </motion.div>
 
           {/* Mobile Visual Showcase (High-Impact Hero Visual right above the fold) */}
-          <div className="lg:hidden w-full pt-1 pb-1">
+          <div className="lg:hidden w-full my-1">
             <div
               onClick={() => setActiveMobileCard((prev) => (prev + 1) % heroCards.length)}
-              className="relative w-full aspect-[16/10] max-h-[250px] rounded-2xl p-2 bg-white shadow-[0_16px_36px_-10px_rgba(85,44,97,0.18)] border border-[#552C61]/12 overflow-hidden cursor-pointer select-none active:scale-[0.99] transition-transform"
+              className="relative w-full aspect-[16/9] max-h-[220px] rounded-2xl overflow-hidden shadow-[0_16px_36px_-10px_rgba(85,44,97,0.22)] border border-[#552C61]/15 cursor-pointer select-none active:scale-[0.99] transition-transform"
             >
-              <div className="relative w-full h-[78%] rounded-xl overflow-hidden">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeMobileCard}
-                    initial={{ opacity: 0, scale: 1.04 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.35 }}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={heroCards[activeMobileCard].img}
-                      alt={heroCards[activeMobileCard].caption}
-                      fill
-                      priority
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 420px"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10" />
-                    <div className="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-black/55 backdrop-blur-md text-[#FFF8FB] text-[10px] font-semibold tracking-wider uppercase font-sans">
-                      {heroCards[activeMobileCard].tag}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeMobileCard}
+                  initial={{ opacity: 0, scale: 1.03 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={heroCards[activeMobileCard].img}
+                    alt={heroCards[activeMobileCard].caption}
+                    fill
+                    priority
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 420px"
+                  />
+                  {/* Editorial Vignette & Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
+
+                  {/* Top Tag: City & Status */}
+                  <div className="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-black/50 backdrop-blur-md border border-white/15 text-[#FFF8FB] text-[10px] font-semibold tracking-wider uppercase font-sans flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span>{heroCards[activeMobileCard].tag}</span>
+                  </div>
+
+                  {/* Bottom Overlay: Caption + Progress Indicators */}
+                  <div className="absolute bottom-2.5 left-3 right-3 flex items-end justify-between">
+                    <div>
+                      <span className="text-[9.5px] uppercase tracking-[0.2em] text-[#FFF8FB]/75 font-sans block">
+                        Curated Moment 0{activeMobileCard + 1}
+                      </span>
+                      <span className="font-serif italic text-base sm:text-lg text-white font-medium drop-shadow-sm">
+                        {heroCards[activeMobileCard].caption}
+                      </span>
                     </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
 
-              {/* Bottom Caption & Pagination Dots */}
-              <div className="h-[22%] flex items-center justify-between px-2 pt-1">
-                <span className="font-serif italic text-sm text-[#552C61] font-medium truncate">
-                  {heroCards[activeMobileCard].caption}
-                </span>
-
-                <div className="flex items-center gap-1.5 shrink-0">
-                  {heroCards.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveMobileCard(i);
-                      }}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        activeMobileCard === i
-                          ? "w-4 bg-[#552C61]"
-                          : "w-1.5 bg-[#552C61]/25 hover:bg-[#552C61]/50"
-                      }`}
-                      aria-label={`View moment ${i + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-between px-1 pt-1.5 text-[9.5px] text-[#2B2B2B]/55 font-sans">
-              <span>Tap photo to explore moments</span>
-              <span>0{activeMobileCard + 1} / 03</span>
+                    <div className="flex items-center gap-1.5 pb-0.5">
+                      {heroCards.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveMobileCard(i);
+                          }}
+                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                            activeMobileCard === i
+                              ? "w-5 bg-white shadow-sm"
+                              : "w-1.5 bg-white/40 hover:bg-white/70"
+                          }`}
+                          aria-label={`View moment ${i + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
 
           {/* Supporting Statement */}
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm sm:text-base md:text-lg text-[#2B2B2B]/80 font-sans max-w-lg font-normal leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.16 }}
+            className="text-xs sm:text-base md:text-lg text-[#2B2B2B]/80 font-sans max-w-lg font-normal leading-relaxed"
           >
             Meeting someone is easy. But finding someone who wants the same thing isn&apos;t.
             Wingmann introduces thoughtful human matchmaking for those ready to{" "}
@@ -194,15 +191,15 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
 
           {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto pt-1"
+            transition={{ duration: 0.6, delay: 0.22 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto pt-0.5 sm:pt-1"
           >
             <button
               onClick={onOpenWaitlist}
               data-cursor="begin"
-              className="btn-primary group w-full sm:w-auto"
+              className="btn-primary group w-full sm:w-auto justify-center py-3.5 sm:py-3.5 shadow-lg shadow-[#552C61]/25 hover:shadow-xl hover:shadow-[#552C61]/35"
             >
               <span>BEGIN YOUR STORY</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -211,7 +208,7 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
             <button
               onClick={scrollToNext}
               data-cursor="open"
-              className="btn-secondary w-full sm:w-auto"
+              className="btn-secondary w-full sm:w-auto justify-center py-2.5 sm:py-3 text-xs"
             >
               EXPLORE WINGMANN
             </button>
@@ -221,10 +218,10 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1 text-[10.5px] sm:text-[11px] text-[#2B2B2B]/60 font-sans"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-wrap items-center gap-2 sm:gap-3 pt-0.5 text-[10px] sm:text-[11px] text-[#2B2B2B]/60 font-sans"
           >
-            <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
               <span>Bengaluru & Hyderabad</span>
             </div>

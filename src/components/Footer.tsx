@@ -6,14 +6,12 @@ import { LegalDocType } from "@/components/LegalModal";
 
 interface FooterProps {
   onOpenLegal: (type: LegalDocType) => void;
-  onOpenCookieSettings: () => void;
   onOpenWaitlist: () => void;
   onOpenDownload?: () => void;
 }
 
 export function Footer({
   onOpenLegal,
-  onOpenCookieSettings,
   onOpenWaitlist,
   onOpenDownload,
 }: FooterProps) {
@@ -246,22 +244,6 @@ export function Footer({
                   className="hover:text-white transition-colors cursor-pointer text-left"
                 >
                   Terms of Service
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onOpenLegal("cookies")}
-                  className="hover:text-white transition-colors cursor-pointer text-left"
-                >
-                  Cookie Policy
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={onOpenCookieSettings}
-                  className="text-[#7B4F87] hover:text-white transition-colors cursor-pointer text-left font-medium"
-                >
-                  Cookie Settings
                 </button>
               </li>
               <li className="pt-1">

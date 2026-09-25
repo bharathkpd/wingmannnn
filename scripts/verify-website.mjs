@@ -43,7 +43,6 @@ async function verifyWebsite() {
     { label: 'FAQ Section', text: 'Frequently Asked Questions' },
     { label: 'Closing Section Headline', text: 'Maybe your person is' },
     { label: 'Closing Microcopy', text: 'Not for everyone. Just for the serious ones.' },
-    { label: 'Cookie Settings', text: 'Cookie Settings' },
     { label: 'Footer Brand', text: 'WINGMANN' },
     { label: 'Footer Tagline', text: 'DATE WITH INTENT' },
     { label: 'Instagram Icon Link', text: 'Follow Wingmann on Instagram' },
