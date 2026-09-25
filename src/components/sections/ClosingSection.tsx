@@ -37,7 +37,7 @@ export function ClosingSection({
 
       {/* Ambient Lighting */}
       <div
-        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#CC0000]/12 rounded-full blur-[140px]"
+        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[500px] md:w-[700px] h-[320px] sm:h-[450px] md:h-[500px] bg-[#CC0000]/12 rounded-full blur-[90px] sm:blur-[140px] max-w-full"
         aria-hidden="true"
       />
 

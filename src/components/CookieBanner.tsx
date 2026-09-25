@@ -22,13 +22,12 @@ export function CookieBanner({
       const saved = localStorage.getItem("wingmann_cookie_consent");
       if (saved) {
         const parsed = JSON.parse(saved);
-        setHasConsented(true);
         setAnalyticsEnabled(!!parsed.analytics);
-      } else {
-        setHasConsented(false);
       }
+      // Never show automatic intrusive popup banner on initial page load
+      setHasConsented(true);
     } catch {
-      setHasConsented(false);
+      setHasConsented(true);
     }
   }, []);
 

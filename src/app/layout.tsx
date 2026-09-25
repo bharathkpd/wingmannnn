@@ -64,11 +64,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${serifFont.variable} ${sansFont.variable}`}>
-      <body className="antialiased bg-[#F7F2ED] text-[#2B2B2B]">
+    <html lang="en" className={`${serifFont.variable} ${sansFont.variable} overflow-x-hidden`}>
+      <body className="antialiased bg-[#F7F2ED] text-[#2B2B2B] overflow-x-hidden max-w-[100vw] min-h-screen">
         <div className="film-grain" aria-hidden="true" />
         <CustomCursor />
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          <div className="overflow-x-hidden w-full max-w-[100vw]">
+            {children}
+          </div>
+        </SmoothScroll>
       </body>
     </html>
   );

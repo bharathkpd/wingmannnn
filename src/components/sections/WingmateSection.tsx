@@ -41,7 +41,7 @@ export function WingmateSection() {
     >
       {/* Ambient background lighting */}
       <div
-        className="pointer-events-none absolute -bottom-32 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#7B4F87]/25 rounded-full blur-[140px]"
+        className="pointer-events-none absolute -bottom-32 left-1/2 -translate-x-1/2 w-[320px] sm:w-[600px] md:w-[800px] h-[320px] sm:h-[450px] md:h-[500px] bg-[#7B4F87]/25 rounded-full blur-[90px] sm:blur-[140px] max-w-full"
         aria-hidden="true"
       />
 

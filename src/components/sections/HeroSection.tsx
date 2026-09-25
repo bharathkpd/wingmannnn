@@ -78,7 +78,7 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
     >
       {/* Subtle Ambient Lighting */}
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#552C61]/8 rounded-full blur-[140px]"
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[320px] sm:w-[500px] md:w-[700px] h-[320px] sm:h-[450px] md:h-[500px] bg-[#552C61]/8 rounded-full blur-[90px] sm:blur-[140px] max-w-full"
         aria-hidden="true"
       />
 
@@ -109,9 +109,9 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
             transition={{ duration: 0.6, delay: 0.08 }}
             className="max-w-xl mb-4 sm:mb-6"
           >
-            <h1 className="font-serif text-[clamp(2.3rem,7.5vw,4.8rem)] font-light leading-[1.12] sm:leading-[1.06] tracking-[-0.025em] text-[#552C61] [text-wrap:balance]">
+            <h1 className="font-serif text-[2.1rem] sm:text-4xl md:text-5xl lg:text-[4.5rem] font-light leading-[1.14] sm:leading-[1.08] tracking-[-0.02em] text-[#552C61]">
               Find someone who is looking for the{" "}
-              <span className="italic font-serif font-normal text-[#CC0000] relative inline-block">
+              <span className="italic font-serif font-normal text-[#CC0000] block sm:inline">
                 same thing.
               </span>
             </h1>
@@ -122,7 +122,7 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.16 }}
-            className="text-sm sm:text-base md:text-lg text-[#2B2B2B]/80 font-sans max-w-lg font-normal leading-relaxed mb-6 sm:mb-8"
+            className="text-sm sm:text-base md:text-lg text-[#2B2B2B]/80 font-sans max-w-md sm:max-w-lg font-normal leading-relaxed mb-6 sm:mb-8 break-words"
           >
             Wingmann helps people looking for meaningful relationships meet through intentional, human-led introductions.
           </motion.p>

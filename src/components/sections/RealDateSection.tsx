@@ -18,7 +18,7 @@ export function RealDateSection() {
     <section className="relative py-24 md:py-32 lg:py-36 px-6 md:px-10 bg-[#120914] text-[#FFF8FB] overflow-hidden">
       {/* Background ambient lighting */}
       <div
-        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[#552C61]/20 rounded-full blur-[160px]"
+        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] md:w-[800px] h-[320px] sm:h-[500px] md:h-[600px] bg-[#552C61]/20 rounded-full blur-[90px] sm:blur-[160px] max-w-full"
         aria-hidden="true"
       />
 

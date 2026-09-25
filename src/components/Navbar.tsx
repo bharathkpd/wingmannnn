@@ -60,13 +60,13 @@ export function Navbar({ onOpenWaitlist, onOpenDownload }: NavbarProps) {
           {/* Brand Logo */}
           <a
             href="#"
-            className="group flex flex-col items-start focus:outline-none"
+            className="group flex flex-col items-start focus:outline-none shrink-0"
             data-cursor="open"
           >
-            <span className="font-serif text-2xl md:text-3xl font-bold tracking-tight text-[#552C61] transition-transform duration-300 group-hover:scale-[1.02]">
+            <span className="font-serif text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#552C61] transition-transform duration-300 group-hover:scale-[1.02]">
               WINGMANN
             </span>
-            <span className="font-sans text-[8.5px] sm:text-[9px] md:text-[10px] tracking-[0.24em] uppercase text-[#7B4F87] font-semibold">
+            <span className="font-sans text-[8px] sm:text-[9px] md:text-[10px] tracking-[0.24em] uppercase text-[#7B4F87] font-semibold">
               Date with Intent
             </span>
           </a>
@@ -85,14 +85,15 @@ export function Navbar({ onOpenWaitlist, onOpenDownload }: NavbarProps) {
           </nav>
 
           {/* Action Buttons & Mobile Hamburger */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Join / Begin CTA */}
             <button
               onClick={onOpenWaitlist}
               data-cursor="begin"
-              className="magnetic-btn relative overflow-hidden px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#552C61] text-[#FFF8FB] text-xs md:text-sm font-semibold tracking-wider uppercase transition-all duration-300 hover:bg-[#7B4F87] hover:shadow-[0_8px_20px_-4px_rgba(85,44,97,0.4)] flex items-center gap-1.5 sm:gap-2 cursor-pointer"
+              className="magnetic-btn relative overflow-hidden px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#552C61] text-[#FFF8FB] text-xs md:text-sm font-semibold tracking-wider uppercase transition-all duration-300 hover:bg-[#7B4F87] hover:shadow-[0_8px_20px_-4px_rgba(85,44,97,0.4)] flex items-center gap-1.5 sm:gap-2 cursor-pointer"
             >
-              <span>JOIN WINGMANN</span>
+              <span className="hidden sm:inline">JOIN WINGMANN</span>
+              <span className="sm:hidden">JOIN</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
 
