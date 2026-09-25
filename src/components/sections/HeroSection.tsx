@@ -74,7 +74,7 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="relative min-h-[100svh] flex flex-col justify-between pt-16 sm:pt-28 md:pt-36 pb-6 sm:pb-12 px-4 sm:px-8 md:px-10 overflow-hidden bg-[#F7F2ED]"
+      className="relative min-h-[100svh] flex flex-col justify-between pt-28 sm:pt-32 md:pt-36 lg:pt-40 pb-8 sm:pb-12 md:pb-16 px-6 sm:px-8 md:px-10 overflow-hidden bg-[#F7F2ED]"
     >
       {/* Subtle Ambient Lighting */}
       <div
@@ -82,22 +82,22 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
         aria-hidden="true"
       />
 
-      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center my-auto">
+      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center my-auto">
         {/* Left Column: Brand Statement & Editorial Typography */}
-        <div className="lg:col-span-7 flex flex-col items-start space-y-4 sm:space-y-6 md:space-y-8 z-10 text-left">
+        <div className="lg:col-span-7 flex flex-col items-start z-10 text-left w-full">
           {/* Masthead Eyebrow: Pure editorial luxury */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col gap-1 sm:gap-1.5"
+            className="flex flex-col gap-2 mb-5 sm:mb-6"
           >
-            <div className="flex items-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs tracking-[0.24em] font-sans font-bold uppercase text-[#7B4F87]">
+            <div className="flex items-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs tracking-[0.25em] font-sans font-bold uppercase text-[#7B4F87]">
               <span className="font-serif text-[#552C61] tracking-wider text-xs sm:text-sm font-semibold">WINGMANN</span>
               <span className="w-1.5 h-1.5 rounded-full bg-[#CC0000]" />
               <span>DATE WITH INTENT</span>
             </div>
-            <div className="flex items-center gap-2 text-[10px] sm:text-[11px] tracking-[0.16em] uppercase text-[#2B2B2B]/70 font-medium">
+            <div className="flex items-center gap-2 text-[10.5px] sm:text-[11.5px] tracking-[0.16em] uppercase text-[#2B2B2B]/65 font-medium">
               <span>For people who know what they&apos;re here for</span>
             </div>
           </motion.div>
@@ -107,9 +107,9 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="space-y-1.5 max-w-xl"
+            className="max-w-xl mb-4 sm:mb-6"
           >
-            <h1 className="font-serif text-[clamp(2.15rem,6.8vw,4.8rem)] font-light leading-[1.06] tracking-[-0.025em] text-[#552C61]">
+            <h1 className="font-serif text-[clamp(2.3rem,7.5vw,4.8rem)] font-light leading-[1.12] sm:leading-[1.06] tracking-[-0.025em] text-[#552C61] [text-wrap:balance]">
               Find someone who is looking for the{" "}
               <span className="italic font-serif font-normal text-[#CC0000] relative inline-block">
                 same thing.
@@ -117,78 +117,12 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
             </h1>
           </motion.div>
 
-          {/* Mobile Visual Showcase (High-Impact Hero Visual right above the fold) */}
-          <div className="lg:hidden w-full my-1">
-            <div
-              onClick={() => setActiveMobileCard((prev) => (prev + 1) % heroCards.length)}
-              className="relative w-full aspect-[16/9] max-h-[220px] rounded-2xl overflow-hidden shadow-[0_16px_36px_-10px_rgba(85,44,97,0.22)] border border-[#552C61]/15 cursor-pointer select-none active:scale-[0.99] transition-transform"
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeMobileCard}
-                  initial={{ opacity: 0, scale: 1.03 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={heroCards[activeMobileCard].img}
-                    alt={heroCards[activeMobileCard].caption}
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 420px"
-                  />
-                  {/* Editorial Vignette & Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
-
-                  {/* Top Tag: City & Status */}
-                  <div className="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-black/50 backdrop-blur-md border border-white/15 text-[#FFF8FB] text-[10px] font-semibold tracking-wider uppercase font-sans flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    <span>{heroCards[activeMobileCard].tag}</span>
-                  </div>
-
-                  {/* Bottom Overlay: Caption + Progress Indicators */}
-                  <div className="absolute bottom-2.5 left-3 right-3 flex items-end justify-between">
-                    <div>
-                      <span className="text-[9.5px] uppercase tracking-[0.2em] text-[#FFF8FB]/75 font-sans block">
-                        Curated Moment 0{activeMobileCard + 1}
-                      </span>
-                      <span className="font-serif italic text-base sm:text-lg text-white font-medium drop-shadow-sm">
-                        {heroCards[activeMobileCard].caption}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-1.5 pb-0.5">
-                      {heroCards.map((_, i) => (
-                        <button
-                          key={i}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveMobileCard(i);
-                          }}
-                          className={`h-1.5 rounded-full transition-all duration-300 ${
-                            activeMobileCard === i
-                              ? "w-5 bg-white shadow-sm"
-                              : "w-1.5 bg-white/40 hover:bg-white/70"
-                          }`}
-                          aria-label={`View moment ${i + 1}`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-
           {/* Supporting Statement */}
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.16 }}
-            className="text-xs sm:text-base md:text-lg text-[#2B2B2B]/85 font-sans max-w-lg font-normal leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-[#2B2B2B]/80 font-sans max-w-lg font-normal leading-relaxed mb-6 sm:mb-8"
           >
             Wingmann helps people looking for meaningful relationships meet through intentional, human-led introductions.
           </motion.p>
@@ -198,21 +132,21 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.22 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto pt-0.5 sm:pt-1"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto mb-5 sm:mb-6"
           >
             <button
               onClick={onOpenWaitlist}
               data-cursor="begin"
-              className="btn-primary group w-full sm:w-auto justify-center py-3.5 sm:py-3.5 shadow-lg shadow-[#552C61]/25 hover:shadow-xl hover:shadow-[#552C61]/35 cursor-pointer"
+              className="btn-primary group w-full sm:w-auto justify-center py-4 px-8 text-xs sm:text-sm font-semibold tracking-widest shadow-[0_12px_28px_-6px_rgba(85,44,97,0.3)] hover:shadow-xl hover:shadow-[#552C61]/35 cursor-pointer rounded-full transition-all duration-300 active:scale-[0.98]"
             >
               <span>BEGIN YOUR STORY</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
 
             <button
               onClick={scrollToNext}
               data-cursor="open"
-              className="btn-secondary w-full sm:w-auto justify-center py-2.5 sm:py-3 text-xs cursor-pointer"
+              className="btn-secondary w-full sm:w-auto justify-center py-3.5 px-6 text-xs font-medium tracking-wider cursor-pointer rounded-full border-[#552C61]/20 hover:border-[#552C61]/40 transition-colors"
             >
               EXPLORE WINGMANN
             </button>
@@ -223,17 +157,96 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-wrap items-center gap-2 sm:gap-3 pt-0.5 text-[10px] sm:text-[11px] text-[#2B2B2B]/60 font-sans"
+            className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] sm:text-xs text-[#2B2B2B]/65 font-sans"
           >
-            <div className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+            <div className="flex items-center gap-1.5 font-medium text-[#2B2B2B]/85">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
               <span>Bengaluru & Hyderabad</span>
             </div>
-            <span>•</span>
+            <span className="text-[#552C61]/30">•</span>
             <span>Zero public swipe catalog</span>
-            <span>•</span>
+            <span className="text-[#552C61]/30">•</span>
             <span>Verified member community</span>
           </motion.div>
+
+          {/* Mobile Visual Showcase — Generously Spaced Editorial Card Deck */}
+          <div className="lg:hidden w-full mt-10 sm:mt-14 pb-2">
+            <div className="relative w-full max-w-sm sm:max-w-md mx-auto">
+              {/* Background Depth Card for subtle Framer luxury tilt */}
+              <div className="absolute inset-0 bg-[#552C61]/8 rounded-3xl transform rotate-2 scale-[0.97] pointer-events-none" />
+
+              {/* Active Editorial Card */}
+              <div
+                onClick={() => setActiveMobileCard((prev) => (prev + 1) % heroCards.length)}
+                className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_22px_45px_-12px_rgba(85,44,97,0.22)] border border-[#552C61]/15 cursor-pointer select-none active:scale-[0.99] transition-transform bg-[#F7F2ED]"
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeMobileCard}
+                    initial={{ opacity: 0, scale: 1.03 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.97 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={heroCards[activeMobileCard].img}
+                      alt={heroCards[activeMobileCard].caption}
+                      fill
+                      priority
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 480px"
+                    />
+                    {/* Editorial Vignette & Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
+
+                    {/* Top Tag: City & Status */}
+                    <div className="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-black/55 backdrop-blur-md border border-white/20 text-[#FFF8FB] text-[10px] font-semibold tracking-wider uppercase font-sans flex items-center gap-1.5 shadow-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      <span>{heroCards[activeMobileCard].tag}</span>
+                    </div>
+
+                    {/* Bottom Overlay: Caption + Progress Indicators */}
+                    <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                      <div>
+                        <span className="text-[10px] uppercase tracking-[0.22em] text-[#FFF8FB]/80 font-sans block mb-0.5">
+                          Curated Moment 0{activeMobileCard + 1}
+                        </span>
+                        <span className="font-serif italic text-lg sm:text-xl text-white font-medium drop-shadow-sm">
+                          {heroCards[activeMobileCard].caption}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 pb-0.5">
+                        {heroCards.map((_, i) => (
+                          <button
+                            key={i}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveMobileCard(i);
+                            }}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${
+                              activeMobileCard === i
+                                ? "w-6 bg-white shadow-sm"
+                                : "w-1.5 bg-white/40 hover:bg-white/70"
+                            }`}
+                            aria-label={`View moment ${i + 1}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Subtle Tap Hint */}
+              <div className="flex items-center justify-center gap-2 mt-3 text-[10px] tracking-[0.18em] uppercase text-[#552C61]/55 font-medium">
+                <span>Tap card to cycle moments</span>
+                <span>•</span>
+                <span>0{activeMobileCard + 1} of 0{heroCards.length}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Right Column: Stacked Card Visual with Parallax (Desktop Only) */}
