@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight, Smartphone } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SITE_CONFIG } from "@/config/site";
 
@@ -86,23 +86,13 @@ export function Navbar({ onOpenWaitlist, onOpenDownload }: NavbarProps) {
 
           {/* Action Buttons & Mobile Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Desktop Download App Button */}
-            <button
-              onClick={handleDownload}
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#552C61]/20 hover:border-[#552C61] text-[#552C61] text-xs font-semibold tracking-wider uppercase transition-all duration-300 hover:bg-[#552C61]/5 cursor-pointer"
-            >
-              <Smartphone className="w-3.5 h-3.5 text-[#CC0000]" />
-              <span>Download</span>
-            </button>
-
             {/* Join / Begin CTA */}
             <button
               onClick={onOpenWaitlist}
               data-cursor="begin"
-              className="magnetic-btn relative overflow-hidden px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#552C61] text-[#FFF8FB] text-xs md:text-sm font-semibold tracking-wider uppercase transition-all duration-300 hover:bg-[#7B4F87] hover:shadow-[0_8px_20px_-4px_rgba(85,44,97,0.4)] flex items-center gap-1.5 sm:gap-2 cursor-pointer"
+              className="magnetic-btn relative overflow-hidden px-4 sm:px-6 py-2 sm:py-2.5 rounded-full bg-[#552C61] text-[#FFF8FB] text-xs md:text-sm font-semibold tracking-wider uppercase transition-all duration-300 hover:bg-[#7B4F87] hover:shadow-[0_8px_20px_-4px_rgba(85,44,97,0.4)] flex items-center gap-1.5 sm:gap-2 cursor-pointer"
             >
-              <span className="hidden xs:inline">JOIN WINGMANN</span>
-              <span className="xs:hidden">JOIN</span>
+              <span>JOIN WINGMANN</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
 
@@ -152,21 +142,10 @@ export function Navbar({ onOpenWaitlist, onOpenDownload }: NavbarProps) {
                   setMobileMenuOpen(false);
                   onOpenWaitlist();
                 }}
-                className="w-full py-4 rounded-full bg-[#552C61] text-[#FFF8FB] text-center font-semibold text-sm tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                className="w-full py-4 rounded-full bg-[#552C61] text-[#FFF8FB] text-center font-semibold text-sm tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer shadow-md hover:bg-[#7B4F87] transition-colors"
               >
                 <span>BEGIN YOUR STORY</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  handleDownload();
-                }}
-                className="w-full py-3.5 rounded-full border border-[#552C61]/25 text-[#552C61] text-center font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer hover:bg-[#552C61]/5"
-              >
-                <Smartphone className="w-4 h-4 text-[#CC0000]" />
-                <span>DOWNLOAD WINGMANN APP</span>
               </button>
 
               {/* Mobile Drawer Social Links */}

@@ -97,7 +97,7 @@ export const SITE_CONFIG = {
         "Out of dozens of superficial conversations on regular apps, this was the first time someone had actually listened to what we were both seeking.",
       story:
         "We met at a quiet bookstore café on Church Street after our Wingmate suggested we shared the same rhythm of life. No games, no guessing games about commitment. Just two people sitting down with total clarity.",
-      image: "/images/hero-1.jpg",
+      image: "/images/hero-indian-moment.jpg",
       tag: "Shared Life Vision",
     },
     {
@@ -109,7 +109,7 @@ export const SITE_CONFIG = {
         "The 15-minute phone call before the date felt completely natural because we already knew we were on the exact same page.",
       story:
         "We both wanted a serious relationship without the corporate posturing. Our Wingmate's note pointed out our shared love for early morning runs and long Sunday cookouts. It turned out to be completely true.",
-      image: "/images/hero-3.jpg",
+      image: "/images/indian-real-date.jpg",
       tag: "Intentional Courtship",
     },
     {
@@ -121,7 +121,7 @@ export const SITE_CONFIG = {
         "Knowing that every person on Wingmann had spoken to a real human eliminated all the anxiety and second-guessing.",
       story:
         "Within twenty minutes of our first coffee at Indiranagar, we realized we were speaking to someone who was genuinely ready for partnership, not just killing boredom on a Tuesday evening.",
-      image: "/images/closing-walk.jpg",
+      image: "/images/indian-closing-walk.jpg",
       tag: "Emotional Maturity",
     },
   ],

@@ -78,7 +78,7 @@ export function RealConversationCall() {
                   <div className="relative w-28 h-28 mx-auto">
                     <div className="relative w-full h-full rounded-full overflow-hidden border border-emerald-400/60 shadow-lg">
                       <Image
-                        src="/images/marquee-3.jpg"
+                        src="/images/indian-call-portrait.jpg"
                         alt="Ananya Profile"
                         fill
                         className="object-cover"
@@ -132,7 +132,7 @@ export function RealConversationCall() {
                   {/* Mini Avatar */}
                   <div className="relative w-20 h-20 mx-auto rounded-full overflow-hidden border border-white/20 shadow-md">
                     <Image
-                      src="/images/marquee-3.jpg"
+                      src="/images/indian-call-portrait.jpg"
                       alt="Ananya Speaking"
                       fill
                       className="object-cover"

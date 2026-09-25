@@ -20,7 +20,7 @@ const DEMO_CARDS: CardData[] = [
     name: "Aarav",
     age: 28,
     city: "Bengaluru",
-    img: "/images/marquee-1.jpg",
+    img: "/images/indian-man-portrait.jpg",
     bio: "Product architect. Loves filter coffee and quiet bookstore evenings.",
   },
   {
@@ -28,7 +28,7 @@ const DEMO_CARDS: CardData[] = [
     name: "Rhea",
     age: 27,
     city: "Hyderabad",
-    img: "/images/marquee-2.jpg",
+    img: "/images/hero-indian-portrait.jpg",
     bio: "Urban planner. Sunday farmer markets and acoustic playlists.",
   },
   {
@@ -36,7 +36,7 @@ const DEMO_CARDS: CardData[] = [
     name: "Dev",
     age: 29,
     city: "Bengaluru",
-    img: "/images/marquee-3.jpg",
+    img: "/images/indian-closing-walk.jpg",
     bio: "Writer & cyclist. Looking for someone grounded who values slow mornings.",
   },
   {
@@ -44,16 +44,16 @@ const DEMO_CARDS: CardData[] = [
     name: "Simran",
     age: 26,
     city: "Hyderabad",
-    img: "/images/marquee-4.jpg",
+    img: "/images/indian-call-portrait.jpg",
     bio: "Visual designer. Long weekend road trips and honest conversations.",
   },
   {
     id: 5,
-    name: "Karan",
-    age: 30,
+    name: "Meera",
+    age: 28,
     city: "Bengaluru",
-    img: "/images/marquee-5.jpg",
-    bio: "Culinary explorer. Ready for a real partnership without the games.",
+    img: "/images/indian-curated-intro.jpg",
+    bio: "Architect & writer. Early morning pour-overs and deep dialogues.",
   },
 ];
 
@@ -276,8 +276,12 @@ function SwipeCardItem({
           className="object-cover pointer-events-none"
           sizes="(max-width: 768px) 300px, 340px"
         />
-        <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-black/50 backdrop-blur-md text-white text-[11px] font-sans font-medium">
-          {card.city}
+        <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-sans font-medium flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          <span>{card.city}</span>
+        </div>
+        <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-black/50 backdrop-blur-md text-white/80 text-[9px] font-mono tracking-wider uppercase font-semibold">
+          Demo Profile
         </div>
       </div>
 

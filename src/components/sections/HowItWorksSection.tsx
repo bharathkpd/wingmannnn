@@ -10,12 +10,12 @@ export function HowItWorksSection() {
 
   const stepVisuals = [
     {
-      img: "/images/vignette-1-conversation.jpg",
+      img: "/images/hero-indian-portrait.jpg",
       tag: "Self-Reflection",
       notification: null,
     },
     {
-      img: "/images/vignette-2-coffee.jpg",
+      img: "/images/indian-wingmate-portrait.jpg",
       tag: "Human Dialogue",
       notification: null,
     },
@@ -25,12 +25,12 @@ export function HowItWorksSection() {
       notification: "Application Accepted • Welcome to Wingmann",
     },
     {
-      img: "/images/hero-2.jpg",
+      img: "/images/indian-curated-intro.jpg",
       tag: "Curated Introduction",
       notification: "Your wingmate wants to introduce you to someone.",
     },
     {
-      img: "/images/cinematic-coffee.jpg",
+      img: "/images/indian-real-date.jpg",
       tag: "The Real Table",
       notification: "Reservation confirmed: Friday 7:30 PM",
     },

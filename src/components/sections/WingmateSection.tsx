@@ -71,7 +71,7 @@ export function WingmateSection() {
           >
             <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/20">
               <Image
-                src="/images/marquee-6.jpg"
+                src="/images/indian-wingmate-portrait.jpg"
                 alt="Your Dedicated Wingmate Guide"
                 fill
                 className="object-cover"

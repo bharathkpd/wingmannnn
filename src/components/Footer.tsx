@@ -6,12 +6,14 @@ import { LegalDocType } from "@/components/LegalModal";
 
 interface FooterProps {
   onOpenLegal: (type: LegalDocType) => void;
+  onOpenCookieSettings?: () => void;
   onOpenWaitlist: () => void;
   onOpenDownload?: () => void;
 }
 
 export function Footer({
   onOpenLegal,
+  onOpenCookieSettings,
   onOpenWaitlist,
   onOpenDownload,
 }: FooterProps) {
@@ -109,41 +111,6 @@ export function Footer({
               </a>
             </div>
 
-            {/* Direct App Store & Google Play Download Badges */}
-            <div className="pt-2 space-y-2">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-[#7B4F87] font-semibold block">
-                Get the Wingmann App
-              </span>
-              <div className="flex flex-wrap items-center gap-2.5">
-                <button
-                  onClick={handleDownload}
-                  className="group px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-[#FFF8FB] text-xs flex items-center gap-2.5 transition-all hover:scale-[1.02] cursor-pointer"
-                  aria-label="Download Wingmann on App Store"
-                >
-                  <svg className="w-4 h-4 fill-current text-white shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 1.04-2.85 0-.15-.01-.3-.04-.44-.99.04-2.19.66-2.9 1.48-.56.64-1.05 1.68-1.05 2.74 0 .15.02.3.04.38 1.06-.08 2.22-.65 2.91-1.31" />
-                  </svg>
-                  <div className="text-left leading-tight">
-                    <div className="text-[8px] uppercase tracking-wider text-[#FFF8FB]/60">Download on the</div>
-                    <div className="text-[11px] font-semibold text-white">App Store</div>
-                  </div>
-                </button>
-
-                <button
-                  onClick={handleDownload}
-                  className="group px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-[#FFF8FB] text-xs flex items-center gap-2.5 transition-all hover:scale-[1.02] cursor-pointer"
-                  aria-label="Download Wingmann on Google Play"
-                >
-                  <svg className="w-4 h-4 fill-current text-white shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3.609 1.814L13.792 12 3.61 22.186a2.29 2.29 0 0 1-.61-.715V2.53c.184-.282.392-.524.609-.716zm11.24 11.243l2.457 2.457-11.45 6.467 8.993-8.924zm0-2.114L5.857 1.872l11.45 6.467-2.457 2.604zm1.488 1.057l3.65 2.06a1.44 1.44 0 0 0 0-2.493l-3.65-2.06-1.523 1.523 1.523.97z" />
-                  </svg>
-                  <div className="text-left leading-tight">
-                    <div className="text-[8px] uppercase tracking-wider text-[#FFF8FB]/60">GET IT ON</div>
-                    <div className="text-[11px] font-semibold text-white">Google Play</div>
-                  </div>
-                </button>
-              </div>
-            </div>
           </div>
 
           {/* Navigation Column */}
@@ -246,13 +213,12 @@ export function Footer({
                   Terms of Service
                 </button>
               </li>
-              <li className="pt-1">
+              <li>
                 <button
-                  onClick={handleDownload}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 hover:text-white transition-colors cursor-pointer"
+                  onClick={onOpenCookieSettings}
+                  className="text-[#7B4F87] hover:text-white transition-colors cursor-pointer text-left font-medium"
                 >
-                  <Smartphone className="w-3.5 h-3.5 text-[#CC0000]" />
-                  <span>Download App</span>
+                  Cookie Settings
                 </button>
               </li>
               <li className="pt-1">
@@ -284,16 +250,38 @@ export function Footer({
           <div className="flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={handleDownload}
-              className="px-6 py-3 rounded-full bg-white text-[#552C61] hover:bg-[#FFF8FB] text-xs font-sans font-bold tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-md flex items-center gap-2.5 cursor-pointer"
+              className="group px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-[#FFF8FB] text-xs flex items-center gap-2.5 transition-all hover:scale-[1.02] cursor-pointer"
+              aria-label="Download Wingmann on App Store"
             >
-              <Smartphone className="w-4 h-4 text-[#CC0000]" />
-              <span>DOWNLOAD APP</span>
+              <svg className="w-4 h-4 fill-current text-white shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 1.04-2.85 0-.15-.01-.3-.04-.44-.99.04-2.19.66-2.9 1.48-.56.64-1.05 1.68-1.05 2.74 0 .15.02.3.04.38 1.06-.08 2.22-.65 2.91-1.31" />
+              </svg>
+              <div className="text-left leading-tight">
+                <div className="text-[8px] uppercase tracking-wider text-[#FFF8FB]/60">Download on the</div>
+                <div className="text-[11px] font-semibold text-white">App Store</div>
+              </div>
             </button>
+
+            <button
+              onClick={handleDownload}
+              className="group px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-[#FFF8FB] text-xs flex items-center gap-2.5 transition-all hover:scale-[1.02] cursor-pointer"
+              aria-label="Download Wingmann on Google Play"
+            >
+              <svg className="w-4 h-4 fill-current text-white shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a2.29 2.29 0 0 1-.61-.715V2.53c.184-.282.392-.524.609-.716zm11.24 11.243l2.457 2.457-11.45 6.467 8.993-8.924zm0-2.114L5.857 1.872l11.45 6.467-2.457 2.604zm1.488 1.057l3.65 2.06a1.44 1.44 0 0 0 0-2.493l-3.65-2.06-1.523 1.523 1.523.97z" />
+              </svg>
+              <div className="text-left leading-tight">
+                <div className="text-[8px] uppercase tracking-wider text-[#FFF8FB]/60">GET IT ON</div>
+                <div className="text-[11px] font-semibold text-white">Google Play</div>
+              </div>
+            </button>
+
             <button
               onClick={onOpenWaitlist}
-              className="px-5 py-3 rounded-full bg-transparent hover:bg-white/10 border border-white/20 text-white text-xs font-sans font-semibold tracking-wider uppercase transition-all cursor-pointer"
+              className="px-5 py-3 rounded-full bg-white text-[#552C61] hover:bg-[#FFF8FB] text-xs font-sans font-bold tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-md flex items-center gap-2 cursor-pointer"
             >
               <span>APPLY FOR ACCESS</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>

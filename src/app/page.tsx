@@ -7,6 +7,7 @@ import { WaitlistModal } from "@/components/WaitlistModal";
 import { DownloadModal } from "@/components/DownloadModal";
 import { StoryModal, StoryItem } from "@/components/StoryModal";
 import { LegalModal, LegalDocType } from "@/components/LegalModal";
+import { CookieBanner } from "@/components/CookieBanner";
 
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProblemSection } from "@/components/sections/ProblemSection";
@@ -28,6 +29,7 @@ export default function Home() {
   const [downloadOpen, setDownloadOpen] = useState(false);
   const [selectedStory, setSelectedStory] = useState<StoryItem | null>(null);
   const [legalModalType, setLegalModalType] = useState<LegalDocType | null>(null);
+  const [cookiePrefsOpen, setCookiePrefsOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-[#F7F2ED] text-[#2B2B2B] relative selection:bg-[#552C61] selection:text-[#FFF8FB]">
@@ -88,6 +90,7 @@ export default function Home() {
       {/* Footer (with fixed Instagram & Twitter & LinkedIn icons + App Download Badges & Callout) */}
       <Footer
         onOpenLegal={(type) => setLegalModalType(type)}
+        onOpenCookieSettings={() => setCookiePrefsOpen(true)}
         onOpenWaitlist={() => setWaitlistOpen(true)}
         onOpenDownload={() => setDownloadOpen(true)}
       />
@@ -112,6 +115,11 @@ export default function Home() {
       <LegalModal
         type={legalModalType}
         onClose={() => setLegalModalType(null)}
+      />
+
+      <CookieBanner
+        forceOpenPreferences={cookiePrefsOpen}
+        onClosePreferences={() => setCookiePrefsOpen(false)}
       />
     </main>
   );

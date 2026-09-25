@@ -54,7 +54,10 @@ export function StoriesSection({ onSelectStory }: StoriesSectionProps) {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 400px"
                 />
-                <div className="absolute top-4 left-4">
+                <div className="absolute top-4 left-4 flex items-center gap-2">
+                  <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[9px] font-mono tracking-wider uppercase font-semibold">
+                    DEMO STORY
+                  </span>
                   <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#552C61] text-[10px] font-bold uppercase tracking-wider">
                     {story.tag}
                   </span>

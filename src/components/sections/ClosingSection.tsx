@@ -26,8 +26,8 @@ export function ClosingSection({
       {/* Background Atmosphere Image with Duotone Blend */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
         <Image
-          src="/images/closing-walk.jpg"
-          alt="Two people walking together in golden hour"
+          src="/images/indian-closing-walk.jpg"
+          alt="Two people walking together along Bangalore boulevard"
           fill
           className="object-cover"
           sizes="100vw"

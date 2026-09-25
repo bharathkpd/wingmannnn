@@ -62,7 +62,7 @@ export function RealDateSection() {
           {/* Left: Atmospheric Photography */}
           <div className="lg:col-span-6 relative h-[340px] sm:h-[400px] rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
             <Image
-              src="/images/cinematic-coffee.jpg"
+              src="/images/indian-real-date.jpg"
               alt="Warm candlelit date environment at café"
               fill
               className="object-cover"

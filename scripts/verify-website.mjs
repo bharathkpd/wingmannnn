@@ -43,6 +43,7 @@ async function verifyWebsite() {
     { label: 'FAQ Section', text: 'Frequently Asked Questions' },
     { label: 'Closing Section Headline', text: 'Maybe your person is' },
     { label: 'Closing Microcopy', text: 'Not for everyone. Just for the serious ones.' },
+    { label: 'Cookie Settings', text: 'Cookie Settings' },
     { label: 'Footer Brand', text: 'WINGMANN' },
     { label: 'Footer Tagline', text: 'DATE WITH INTENT' },
     { label: 'Instagram Icon Link', text: 'Follow Wingmann on Instagram' },
@@ -65,20 +66,16 @@ async function verifyWebsite() {
 
   // 3. Verify images rendering from /images
   const imageNames = [
-    'hero-1.jpg',
-    'hero-2.jpg',
-    'hero-3.jpg',
+    'hero-indian-moment.jpg',
+    'hero-indian-portrait.jpg',
+    'indian-man-portrait.jpg',
+    'indian-wingmate-portrait.jpg',
+    'indian-curated-intro.jpg',
+    'indian-call-portrait.jpg',
+    'indian-real-date.jpg',
+    'indian-closing-walk.jpg',
     'intrigue-phone.jpg',
-    'vignette-1-conversation.jpg',
-    'vignette-2-coffee.jpg',
     'cinematic-coffee.jpg',
-    'closing-walk.jpg',
-    'marquee-1.jpg',
-    'marquee-2.jpg',
-    'marquee-3.jpg',
-    'marquee-4.jpg',
-    'marquee-5.jpg',
-    'marquee-6.jpg',
   ];
 
   console.log('\n--- Verifying Image Assets Delivery ---');
