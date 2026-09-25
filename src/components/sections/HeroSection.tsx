@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
@@ -13,7 +13,6 @@ interface HeroSectionProps {
 export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
-  const [activeMobileCard, setActiveMobileCard] = useState(0);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -47,15 +46,6 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
       zIndex: 3,
     },
   ];
-
-  // Gentle auto-cycle for mobile showcase
-  useEffect(() => {
-    if (!isMobile) return;
-    const interval = setInterval(() => {
-      setActiveMobileCard((prev) => (prev + 1) % heroCards.length);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [isMobile, heroCards.length]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (isMobile) return;
@@ -168,85 +158,6 @@ export function HeroSection({ onOpenWaitlist, onOpenDownload }: HeroSectionProps
             <span className="text-[#552C61]/30">•</span>
             <span>Verified member community</span>
           </motion.div>
-
-          {/* Mobile Visual Showcase — Generously Spaced Editorial Card Deck */}
-          <div className="lg:hidden w-full mt-10 sm:mt-14 pb-2">
-            <div className="relative w-full max-w-sm sm:max-w-md mx-auto">
-              {/* Background Depth Card for subtle Framer luxury tilt */}
-              <div className="absolute inset-0 bg-[#552C61]/8 rounded-3xl transform rotate-2 scale-[0.97] pointer-events-none" />
-
-              {/* Active Editorial Card */}
-              <div
-                onClick={() => setActiveMobileCard((prev) => (prev + 1) % heroCards.length)}
-                className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_22px_45px_-12px_rgba(85,44,97,0.22)] border border-[#552C61]/15 cursor-pointer select-none active:scale-[0.99] transition-transform bg-[#F7F2ED]"
-              >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeMobileCard}
-                    initial={{ opacity: 0, scale: 1.03 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.97 }}
-                    transition={{ duration: 0.4 }}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={heroCards[activeMobileCard].img}
-                      alt={heroCards[activeMobileCard].caption}
-                      fill
-                      priority
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 480px"
-                    />
-                    {/* Editorial Vignette & Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10" />
-
-                    {/* Top Tag: City & Status */}
-                    <div className="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-black/55 backdrop-blur-md border border-white/20 text-[#FFF8FB] text-[10px] font-semibold tracking-wider uppercase font-sans flex items-center gap-1.5 shadow-sm">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                      <span>{heroCards[activeMobileCard].tag}</span>
-                    </div>
-
-                    {/* Bottom Overlay: Caption + Progress Indicators */}
-                    <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-                      <div>
-                        <span className="text-[10px] uppercase tracking-[0.22em] text-[#FFF8FB]/80 font-sans block mb-0.5">
-                          Curated Moment 0{activeMobileCard + 1}
-                        </span>
-                        <span className="font-serif italic text-lg sm:text-xl text-white font-medium drop-shadow-sm">
-                          {heroCards[activeMobileCard].caption}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 pb-0.5">
-                        {heroCards.map((_, i) => (
-                          <button
-                            key={i}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setActiveMobileCard(i);
-                            }}
-                            className={`h-1.5 rounded-full transition-all duration-300 ${
-                              activeMobileCard === i
-                                ? "w-6 bg-white shadow-sm"
-                                : "w-1.5 bg-white/40 hover:bg-white/70"
-                            }`}
-                            aria-label={`View moment ${i + 1}`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* Subtle Tap Hint */}
-              <div className="flex items-center justify-center gap-2 mt-3 text-[10px] tracking-[0.18em] uppercase text-[#552C61]/55 font-medium">
-                <span>Tap card to cycle moments</span>
-                <span>•</span>
-                <span>0{activeMobileCard + 1} of 0{heroCards.length}</span>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Right Column: Stacked Card Visual with Parallax (Desktop Only) */}
