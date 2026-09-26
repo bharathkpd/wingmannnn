@@ -60,154 +60,156 @@ export function EditorialExperience({ onOpenWaitlist }: EditorialExperienceProps
   return (
     <section
       id="the-experience"
-      className="relative py-28 sm:py-36 md:py-44 px-6 sm:px-10 md:px-16 bg-[#141113] text-[#FFFDFB] overflow-hidden"
+      className="relative py-14 sm:py-20 md:py-28 px-4 sm:px-8 md:px-12 bg-[#FBF8F4] overflow-hidden"
     >
-      {/* Ambient Lighting */}
-      <div
-        className="pointer-events-none absolute top-1/3 right-1/4 w-[450px] md:w-[750px] h-[450px] md:h-[750px] bg-[#8E2432]/10 rounded-full blur-[170px]"
-        aria-hidden="true"
-      />
+      <div className="max-w-5xl mx-auto rounded-3xl md:rounded-[2.5rem] bg-[#141113] text-[#FFFDFB] p-6 sm:p-12 md:p-16 shadow-[0_25px_60px_-15px_rgba(25,21,23,0.35)] relative overflow-hidden border border-white/10">
+        {/* Ambient Burgundy Glow */}
+        <div
+          className="pointer-events-none absolute -top-24 right-1/4 w-[320px] md:w-[600px] h-[320px] md:h-[600px] bg-[#8E2432]/18 rounded-full blur-[150px]"
+          aria-hidden="true"
+        />
 
-      <div className="max-w-6xl mx-auto space-y-20 relative z-10">
-        {/* Section Header */}
-        <div className="max-w-3xl text-left space-y-4">
-          <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#8E2432] font-semibold block">
-            Chapter 06 • The Experience
-          </span>
-          <h2 className="font-serif text-[clamp(2.4rem,5.5vw,4.8rem)] font-light leading-[1.08] text-[#FFFDFB]">
-            Every relationship starts somewhere. <br className="hidden sm:inline" />
-            <span className="italic text-[#8E2432]">Ours starts here.</span>
-          </h2>
-          <p className="font-sans text-sm sm:text-base text-white/60 max-w-lg leading-relaxed">
-            A 5-step journey built intentionally from first reflection to meeting across a real table.
-          </p>
-        </div>
-
-        {/* Interactive Experience Timeline Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left Column: Synchronized Visual Frame */}
-          <div className="lg:col-span-6 relative aspect-[4/5] sm:aspect-[1/1] lg:aspect-[4/5] w-full max-w-[480px] mx-auto rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0E0C0D]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.num}
-                initial={{ opacity: 0, scale: 1.04 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={current.img}
-                  alt={current.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 480px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6 text-left text-white">
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-white/70 block mb-1">
-                    {current.meta}
-                  </span>
-                  <h4 className="font-serif text-xl sm:text-2xl font-light">
-                    {current.title}
-                  </h4>
-                  <p className="font-serif italic text-sm text-[#8E2432] mt-0.5">
-                    &ldquo;{current.quote}&rdquo;
-                  </p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+        <div className="space-y-10 sm:space-y-14 relative z-10">
+          {/* Section Header */}
+          <div className="max-w-2xl text-left space-y-2.5">
+            <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.25em] uppercase text-[#8E2432] font-semibold block">
+              Chapter 06 • The Experience
+            </span>
+            <h2 className="font-serif text-[clamp(1.9rem,4.5vw,3.8rem)] font-light leading-[1.1] text-[#FFFDFB]">
+              Every relationship starts somewhere. <br className="hidden sm:inline" />
+              <span className="italic text-[#8E2432]">Ours starts here.</span>
+            </h2>
+            <p className="font-sans text-xs sm:text-sm text-white/60 max-w-md leading-relaxed">
+              A 5-step journey built intentionally from first reflection to meeting across a real table.
+            </p>
           </div>
 
-          {/* Right Column: Step Stepper Navigation & Detail */}
-          <div className="lg:col-span-6 space-y-6 text-left">
-            {/* Step Navigation Tabs */}
-            <div className="flex flex-wrap items-center gap-2 border-b border-white/10 pb-4">
-              {steps.map((st, i) => (
-                <button
-                  key={st.num}
-                  onClick={() => setActiveStep(i)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
-                    activeStep === i
-                      ? "bg-[#8E2432] text-white shadow-md shadow-[#8E2432]/40 scale-[1.03]"
-                      : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
-                  }`}
-                  aria-label={`View step ${st.num}: ${st.title}`}
+          {/* Interactive Timeline Experience */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Visual Stage */}
+            <div className="lg:col-span-6 relative aspect-[4/3] sm:aspect-[1/1] lg:aspect-[4/5] w-full max-w-[420px] mx-auto rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 shadow-xl bg-[#0E0C0D]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.num}
+                  initial={{ opacity: 0, scale: 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0"
                 >
-                  <span className="font-semibold">{st.num}</span>
-                  <span className="hidden sm:inline font-sans text-[11px] font-normal opacity-90">{st.title}</span>
-                </button>
-              ))}
+                  <Image
+                    src={current.img}
+                    alt={current.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 420px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
+                  <div className="absolute bottom-5 left-5 right-5 text-left text-white">
+                    <span className="text-[10px] font-mono tracking-widest uppercase text-white/70 block mb-1">
+                      {current.meta}
+                    </span>
+                    <h4 className="font-serif text-lg sm:text-xl font-light">
+                      {current.title}
+                    </h4>
+                    <p className="font-serif italic text-xs sm:text-sm text-[#8E2432] mt-0.5">
+                      &ldquo;{current.quote}&rdquo;
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            {/* Active Step Details */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.num}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.35 }}
-                className="space-y-4 py-2"
-              >
-                <div className="space-y-1">
-                  <span className="text-xs font-mono tracking-widest text-white/50 uppercase">
-                    Step {current.num} of 05
-                  </span>
-                  <h3 className="font-serif text-3xl sm:text-4xl text-white font-light">
-                    {current.title}
-                  </h3>
-                </div>
-
-                <div className="py-2">
-                  <p className="font-serif italic text-xl sm:text-2xl text-[#8E2432] font-normal leading-snug">
-                    &ldquo;{current.quote}&rdquo;
-                  </p>
-                </div>
-
-                <p className="font-sans text-sm sm:text-base text-white/70 leading-relaxed max-w-md">
-                  {current.desc}
-                </p>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Stepper Controls */}
-            <div className="pt-4 flex items-center justify-between border-t border-white/10">
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
-                  disabled={activeStep === 0}
-                  className={`p-2.5 rounded-full border border-white/15 transition-colors ${
-                    activeStep === 0
-                      ? "opacity-30 cursor-not-allowed"
-                      : "hover:bg-white/10 cursor-pointer"
-                  }`}
-                  aria-label="Previous step"
-                >
-                  <ChevronLeft className="w-4 h-4 text-white" />
-                </button>
-
-                <button
-                  onClick={() => setActiveStep((prev) => Math.min(steps.length - 1, prev + 1))}
-                  disabled={activeStep === steps.length - 1}
-                  className={`p-2.5 rounded-full border border-white/15 transition-colors ${
-                    activeStep === steps.length - 1
-                      ? "opacity-30 cursor-not-allowed"
-                      : "hover:bg-white/10 cursor-pointer"
-                  }`}
-                  aria-label="Next step"
-                >
-                  <ChevronRight className="w-4 h-4 text-white" />
-                </button>
+            {/* Stepper Detail */}
+            <div className="lg:col-span-6 space-y-5 text-left">
+              {/* Stepper Pills */}
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 border-b border-white/10 pb-3">
+                {steps.map((st, i) => (
+                  <button
+                    key={st.num}
+                    onClick={() => setActiveStep(i)}
+                    className={`px-3 py-1.5 rounded-full text-xs font-mono font-medium transition-all cursor-pointer flex items-center gap-1.5 ${
+                      activeStep === i
+                        ? "bg-[#8E2432] text-white shadow-md shadow-[#8E2432]/40 scale-[1.02]"
+                        : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
+                    }`}
+                    aria-label={`View step ${st.num}: ${st.title}`}
+                  >
+                    <span className="font-semibold">{st.num}</span>
+                    <span className="hidden sm:inline font-sans text-[11px] font-normal opacity-90">{st.title}</span>
+                  </button>
+                ))}
               </div>
 
-              <button
-                onClick={onOpenWaitlist}
-                className="btn-editorial-primary text-xs py-3 px-6"
-              >
-                <span>Find someone</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+              {/* Active Step Content */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.num}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="space-y-3 py-1"
+                >
+                  <div className="space-y-1">
+                    <span className="text-[11px] font-mono tracking-widest text-white/50 uppercase">
+                      Step {current.num} of 05
+                    </span>
+                    <h3 className="font-serif text-2xl sm:text-3xl text-white font-light">
+                      {current.title}
+                    </h3>
+                  </div>
+
+                  <div className="py-1">
+                    <p className="font-serif italic text-lg sm:text-xl text-[#8E2432] font-normal leading-snug">
+                      &ldquo;{current.quote}&rdquo;
+                    </p>
+                  </div>
+
+                  <p className="font-sans text-xs sm:text-sm text-white/70 leading-relaxed max-w-md">
+                    {current.desc}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Controls */}
+              <div className="pt-3 flex items-center justify-between border-t border-white/10">
+                <div className="flex items-center gap-2.5">
+                  <button
+                    onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
+                    disabled={activeStep === 0}
+                    className={`p-2 rounded-full border border-white/15 transition-colors ${
+                      activeStep === 0
+                        ? "opacity-30 cursor-not-allowed"
+                        : "hover:bg-white/10 cursor-pointer"
+                    }`}
+                    aria-label="Previous step"
+                  >
+                    <ChevronLeft className="w-4 h-4 text-white" />
+                  </button>
+
+                  <button
+                    onClick={() => setActiveStep((prev) => Math.min(steps.length - 1, prev + 1))}
+                    disabled={activeStep === steps.length - 1}
+                    className={`p-2 rounded-full border border-white/15 transition-colors ${
+                      activeStep === steps.length - 1
+                        ? "opacity-30 cursor-not-allowed"
+                        : "hover:bg-white/10 cursor-pointer"
+                    }`}
+                    aria-label="Next step"
+                  >
+                    <ChevronRight className="w-4 h-4 text-white" />
+                  </button>
+                </div>
+
+                <button
+                  onClick={onOpenWaitlist}
+                  className="btn-editorial-primary text-xs py-2.5 px-5"
+                >
+                  <span>Find someone</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

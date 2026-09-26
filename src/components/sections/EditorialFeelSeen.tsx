@@ -53,38 +53,38 @@ export function EditorialFeelSeen() {
   ];
 
   return (
-    <section className="relative py-28 sm:py-36 md:py-44 px-6 sm:px-10 md:px-16 bg-[#FBF8F4] text-[#191517] overflow-hidden">
-      <div className="max-w-6xl mx-auto space-y-24">
+    <section className="relative py-20 sm:py-28 md:py-36 px-5 sm:px-8 md:px-12 bg-[#FBF8F4] text-[#191517] overflow-hidden">
+      <div className="max-w-6xl mx-auto space-y-14 sm:space-y-20">
         {/* Section Prelude */}
-        <div className="max-w-2xl text-left space-y-4">
-          <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#8E2432] font-semibold block">
+        <div className="max-w-2xl text-left space-y-2.5 sm:space-y-3">
+          <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.25em] uppercase text-[#8E2432] font-semibold block">
             Chapter 03 • Feel Seen
           </span>
-          <h2 className="font-serif text-[clamp(2.4rem,5vw,4.5rem)] font-light leading-[1.08] text-[#191517]">
+          <h2 className="font-serif text-[clamp(2rem,4.5vw,3.8rem)] font-light leading-[1.1] text-[#191517]">
             Because nobody falls for someone all at once.
           </h2>
-          <p className="font-serif italic text-2xl sm:text-3xl text-[#544E51] font-light">
+          <p className="font-serif italic text-xl sm:text-2xl text-[#544E51] font-light">
             It happens quietly.
           </p>
         </div>
 
         {/* The Continuous Emotional Scene: Typography Stack & Synchronized Photography */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Interactive Progressive Moments */}
-          <div className="lg:col-span-6 flex flex-col space-y-6">
+          <div className="lg:col-span-6 flex flex-col space-y-3 sm:space-y-4">
             {moments.map((m, idx) => (
               <motion.div
                 key={m.id}
-                initial={{ opacity: 0, x: -16 }}
+                initial={{ opacity: 0, x: -12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.08 * idx, duration: 0.5 }}
+                transition={{ delay: 0.05 * idx, duration: 0.4 }}
                 onClick={() => setActiveMoment(idx)}
                 onMouseEnter={() => setActiveMoment(idx)}
-                className={`group cursor-pointer p-5 rounded-2xl transition-all duration-300 border text-left ${
+                className={`group cursor-pointer p-4 sm:p-4.5 rounded-2xl transition-all duration-300 border text-left ${
                   activeMoment === idx
-                    ? "bg-white border-[#8E2432]/30 shadow-[0_12px_32px_-8px_rgba(142,36,50,0.12)] scale-[1.02]"
-                    : "bg-transparent border-transparent hover:border-[#191517]/10 hover:bg-white/50"
+                    ? "bg-white border-[#8E2432]/25 shadow-[0_10px_28px_-6px_rgba(142,36,50,0.1)] scale-[1.01]"
+                    : "bg-transparent border-transparent hover:border-[#191517]/8 hover:bg-white/40"
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -96,17 +96,17 @@ export function EditorialFeelSeen() {
                     0{idx + 1}
                   </span>
                   <h3
-                    className={`font-serif text-xl sm:text-2xl transition-colors ${
+                    className={`font-serif text-lg sm:text-xl transition-colors ${
                       activeMoment === idx
                         ? "text-[#191517] font-normal"
-                        : "text-[#544E51]/70 group-hover:text-[#191517]"
+                        : "text-[#544E51]/80 group-hover:text-[#191517]"
                     }`}
                   >
                     {m.title}
                   </h3>
                 </div>
                 <p
-                  className={`text-xs sm:text-sm font-sans pt-1.5 pl-7 leading-relaxed transition-opacity ${
+                  className={`text-xs sm:text-sm font-sans pt-1 pl-7 leading-relaxed transition-opacity ${
                     activeMoment === idx ? "text-[#544E51] opacity-100" : "text-[#8C8488] opacity-75"
                   }`}
                 >
@@ -117,14 +117,14 @@ export function EditorialFeelSeen() {
           </div>
 
           {/* Right Column: Visual Stage with Crossfade Animation */}
-          <div className="lg:col-span-6 relative w-full aspect-[4/5] sm:aspect-[1/1] lg:aspect-[4/5] max-w-[480px] mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#191517]/10 bg-[#141113]">
+          <div className="lg:col-span-6 relative w-full aspect-[4/3] sm:aspect-[1/1] lg:aspect-[4/5] max-w-[460px] mx-auto rounded-3xl overflow-hidden shadow-xl border border-[#191517]/10 bg-[#141113]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={moments[activeMoment].id}
-                initial={{ opacity: 0, scale: 1.05 }}
+                initial={{ opacity: 0, scale: 1.04 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0"
               >
                 <Image
@@ -132,14 +132,14 @@ export function EditorialFeelSeen() {
                   alt={moments[activeMoment].title}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 480px"
+                  sizes="(max-width: 1024px) 100vw, 460px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
-                <div className="absolute bottom-6 left-6 right-6 text-left text-white">
+                <div className="absolute bottom-5 left-5 right-5 text-left text-white">
                   <span className="text-[10px] font-mono tracking-widest uppercase text-white/70 block mb-1">
                     {moments[activeMoment].meta}
                   </span>
-                  <p className="font-serif italic text-lg sm:text-xl font-light">
+                  <p className="font-serif italic text-base sm:text-lg font-light">
                     {moments[activeMoment].title}
                   </p>
                 </div>
@@ -150,16 +150,16 @@ export function EditorialFeelSeen() {
 
         {/* The Isolated Climax */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="py-16 sm:py-24 border-t border-[#191517]/12 text-center max-w-3xl mx-auto space-y-6"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="py-12 sm:py-16 border-t border-[#191517]/10 text-center max-w-3xl mx-auto space-y-4"
         >
-          <p className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#191517] font-light leading-snug">
+          <p className="font-serif text-xl sm:text-2xl md:text-3xl text-[#191517] font-light leading-snug">
             And then one day, you realise you&apos;ve been imagining a future...
           </p>
-          <p className="font-serif italic text-3xl sm:text-4xl md:text-5xl text-[#8E2432] font-normal leading-tight">
+          <p className="font-serif italic text-2xl sm:text-3xl md:text-4xl text-[#8E2432] font-normal leading-tight">
             without knowing if they were imagining one too.
           </p>
         </motion.div>
