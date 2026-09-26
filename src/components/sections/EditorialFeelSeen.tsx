@@ -13,50 +13,50 @@ export function EditorialFeelSeen() {
       title: "One conversation.",
       subtitle: "Unplanned, unhurried, stretching past midnight.",
       img: "/images/user-candlelight-date.jpg",
-      meta: "Indiranagar • 11:30 PM",
+      meta: "Late Night Conversation",
     },
     {
       id: "coffee",
       title: "One coffee.",
       subtitle: "Sitting across a wooden table where silence doesn't feel awkward.",
       img: "/images/user-hands-coffee.jpg",
-      meta: "Church Street • 4:15 PM",
+      meta: "Unspoken Comfort",
     },
     {
       id: "phone-call",
       title: "One phone call.",
       subtitle: "Hearing their voice when you didn't think you needed to.",
       img: "/images/user-phonecall-laugh.jpg",
-      meta: "Bengaluru • 9:40 PM",
+      meta: "Genuine Chemistry",
     },
     {
       id: "morning-text",
       title: "One good morning text.",
       subtitle: "A small vibration that sets the tone for your whole day.",
       img: "/images/user-reminder-lockscreen.jpg",
-      meta: "Lock Screen • 8:12 AM",
+      meta: "Morning Thought",
     },
     {
       id: "plan-weekend",
       title: "One plan for next weekend.",
       subtitle: "Suddenly making space for someone in your calendar and in your mind.",
       img: "/images/user-twilight-walk.jpg",
-      meta: "Promenade • Friday Dusk",
+      meta: "Shared Future Planning",
     },
     {
       id: "familiar",
       title: "One moment where they start feeling familiar.",
       subtitle: "Their laugh, their cadence, the way they hold their cup.",
       img: "/images/user-sofa-cozy.jpg",
-      meta: "Living Room • Sunday",
+      meta: "Quiet Familiarity",
     },
   ];
 
   return (
     <section className="relative py-14 sm:py-20 md:py-24 px-5 sm:px-8 md:px-12 bg-[#FBF8F4] text-[#191517] overflow-hidden">
-      <div className="max-w-6xl mx-auto space-y-10 sm:space-y-14">
+      <div className="max-w-6xl mx-auto space-y-8 sm:space-y-12">
         {/* Section Prelude */}
-        <div className="max-w-2xl text-left space-y-2">
+        <div className="max-w-2xl text-left space-y-1.5 sm:space-y-2">
           <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.25em] uppercase text-[#8E2432] font-semibold block">
             Chapter 03 • Feel Seen
           </span>
@@ -116,28 +116,28 @@ export function EditorialFeelSeen() {
             ))}
           </div>
 
-          {/* Right Column: Visual Stage with Crossfade Animation & Thumbnail Strip */}
+          {/* Right Column: Visual Stage with Natural 4:5 Portrait Frame & Thumbnail Strip */}
           <div className="lg:col-span-6 space-y-3 order-1 lg:order-2">
-            <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] max-w-[500px] mx-auto rounded-3xl overflow-hidden shadow-xl border border-[#191517]/10 bg-[#141113]">
+            <div className="relative w-full aspect-[4/5] max-w-[400px] mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#191517]/10 bg-[#141113]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={moments[activeMoment].id}
-                  initial={{ opacity: 0, scale: 1.04 }}
+                  initial={{ opacity: 0, scale: 1.03 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute inset-0"
                 >
                   <Image
                     src={moments[activeMoment].img}
                     alt={moments[activeMoment].title}
                     fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 500px"
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 400px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
-                  <div className="absolute bottom-4 left-5 right-5 text-left text-white">
-                    <span className="text-[10px] font-mono tracking-widest uppercase text-white/70 block mb-0.5">
+                  <div className="absolute bottom-5 left-5 right-5 text-left text-white">
+                    <span className="text-[10px] font-mono tracking-widest uppercase text-white/80 block mb-0.5">
                       {moments[activeMoment].meta}
                     </span>
                     <p className="font-serif italic text-base sm:text-lg font-light">
@@ -148,15 +148,15 @@ export function EditorialFeelSeen() {
               </AnimatePresence>
             </div>
 
-            {/* Visual Moments Filmstrip: All 6 photos visible and interactive */}
-            <div className="flex items-center justify-center gap-2 pt-1 max-w-[500px] mx-auto overflow-x-auto no-scrollbar py-1">
+            {/* Visual Moments Thumbnail Strip: All 6 photos visible and interactive */}
+            <div className="flex items-center justify-center gap-2 pt-1 max-w-[400px] mx-auto overflow-x-auto no-scrollbar py-0.5">
               {moments.map((m, idx) => (
                 <button
                   key={m.id}
                   onClick={() => setActiveMoment(idx)}
-                  className={`relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${
+                  className={`relative w-12 h-14 sm:w-13 sm:h-16 rounded-xl overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${
                     activeMoment === idx
-                      ? "border-[#8E2432] scale-105 shadow-md shadow-[#8E2432]/30 ring-2 ring-[#8E2432]/20"
+                      ? "border-[#8E2432] scale-105 shadow-md shadow-[#8E2432]/35 ring-2 ring-[#8E2432]/25"
                       : "border-transparent opacity-60 hover:opacity-100 hover:scale-102"
                   }`}
                   aria-label={`View moment ${idx + 1}: ${m.title}`}
@@ -166,9 +166,9 @@ export function EditorialFeelSeen() {
                     alt={m.title}
                     fill
                     className="object-cover"
-                    sizes="56px"
+                    sizes="52px"
                   />
-                  <div className="absolute inset-0 bg-black/20" />
+                  <div className="absolute inset-0 bg-black/25" />
                   <span className="absolute bottom-0.5 right-1 text-[9px] font-mono font-bold text-white drop-shadow">
                     0{idx + 1}
                   </span>
@@ -180,11 +180,11 @@ export function EditorialFeelSeen() {
 
         {/* The Isolated Climax */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="pt-8 sm:pt-12 border-t border-[#191517]/10 text-center max-w-3xl mx-auto space-y-3"
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="pt-6 sm:pt-10 border-t border-[#191517]/10 text-center max-w-3xl mx-auto space-y-2.5"
         >
           <p className="font-serif text-lg sm:text-2xl text-[#191517] font-light leading-snug">
             And then one day, you realise you&apos;ve been imagining a future...

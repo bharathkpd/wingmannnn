@@ -9,9 +9,9 @@ export function EditorialProblem() {
       id="the-problem"
       className="relative py-14 sm:py-20 md:py-24 px-5 sm:px-8 md:px-12 bg-[#FBF8F4] text-[#191517] overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto space-y-10 sm:space-y-14">
+      <div className="max-w-6xl mx-auto space-y-8 sm:space-y-12">
         {/* Section Header */}
-        <div className="max-w-3xl text-left space-y-2">
+        <div className="max-w-3xl text-left space-y-1.5 sm:space-y-2">
           <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.25em] uppercase text-[#8E2432] font-semibold block">
             Chapter 04 • The Real Problem
           </span>
@@ -25,11 +25,11 @@ export function EditorialProblem() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Big Empathetic Statements */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 space-y-5 text-left"
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-4 text-left"
           >
             <div className="space-y-2">
               <h3 className="font-serif text-xl sm:text-2xl font-normal text-[#191517] leading-snug">
@@ -54,42 +54,25 @@ export function EditorialProblem() {
             </p>
           </motion.div>
 
-          {/* Right Column: Visual Photographic Story (Curated Pair) */}
+          {/* Right Column: Visual of Reflection & Reality (Natural 16:10 Landscape Ratio) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-3.5"
+            transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-3"
           >
-            {/* Photo 1: Quiet Morning Cafe Table */}
-            <div className="relative aspect-[4/3] sm:aspect-[4/5] rounded-2xl overflow-hidden shadow-md border border-[#191517]/8 group">
+            <div className="relative aspect-[16/10] w-full max-w-[520px] mx-auto rounded-3xl overflow-hidden shadow-xl border border-[#191517]/8">
               <Image
                 src="/images/user-empty-table.jpg"
                 alt="Quiet empty cafe table in morning light"
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-103"
-                sizes="(max-width: 1024px) 100vw, 260px"
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 520px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-3.5">
-                <span className="text-[10px] font-mono tracking-widest uppercase text-white/80">
-                  The Honest Table • Morning
-                </span>
-              </div>
-            </div>
-
-            {/* Photo 2: Quiet Reflection / Unasked Question */}
-            <div className="relative aspect-[4/3] sm:aspect-[4/5] rounded-2xl overflow-hidden shadow-md border border-[#191517]/8 group">
-              <Image
-                src="/images/user-phone-morning.jpg"
-                alt="Person in thoughtful morning light"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-103"
-                sizes="(max-width: 1024px) 100vw, 260px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-3.5">
-                <span className="text-[10px] font-mono tracking-widest uppercase text-white/80">
-                  Unspoken Intent • 8:30 AM
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-5">
+                <span className="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-white/90">
+                  The Silent Table • Where honest intentions matter
                 </span>
               </div>
             </div>
