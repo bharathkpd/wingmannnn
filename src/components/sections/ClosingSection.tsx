@@ -24,15 +24,15 @@ export function ClosingSection({
   return (
     <section className="relative py-28 md:py-36 lg:py-44 px-6 md:px-10 bg-[#552C61] text-[#FFF8FB] overflow-hidden text-center">
       {/* Background Atmosphere Image with Duotone Blend */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+      <div className="absolute inset-0 z-0 opacity-25 md:opacity-35 pointer-events-none">
         <Image
-          src="/images/indian-closing-walk.jpg"
-          alt="Two people walking together along Bangalore boulevard"
+          src="/images/user-sunset-ridge.jpg"
+          alt="Two people walking together toward golden sunset"
           fill
-          className="object-cover"
+          className="object-cover object-[center_35%]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#552C61] via-[#552C61]/85 to-[#552C61]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#552C61] via-[#552C61]/75 to-[#552C61]" />
       </div>
 
       {/* Ambient Lighting */}

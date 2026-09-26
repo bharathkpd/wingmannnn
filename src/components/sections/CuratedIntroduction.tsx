@@ -49,7 +49,7 @@ export function CuratedIntroduction() {
               <div className="py-10 text-center space-y-6">
                 <div className="relative w-24 h-24 mx-auto rounded-full overflow-hidden border border-[#552C61]/25 flex items-center justify-center bg-[#F7F2ED]">
                   <Image
-                    src="/images/indian-curated-intro.jpg"
+                    src="/images/user-journal-cafe.jpg"
                     alt="Introduction Preview"
                     fill
                     className="object-cover blur-sm scale-110 opacity-60"
@@ -89,7 +89,7 @@ export function CuratedIntroduction() {
                   {/* Portrait Photo */}
                   <div className="relative w-32 h-40 rounded-2xl overflow-hidden shrink-0 shadow-md">
                     <Image
-                      src="/images/indian-curated-intro.jpg"
+                      src="/images/user-journal-cafe.jpg"
                       alt="Meera - Curated Profile"
                       fill
                       className="object-cover"

@@ -155,19 +155,30 @@ export function ProblemSection() {
               </AnimatePresence>
             </div>
 
-            <div className="md:col-span-5 relative h-48 sm:h-52 rounded-2xl overflow-hidden border border-white/20">
-              <Image
-                src="/images/intrigue-phone.jpg"
-                alt="Phone facedown on table in dim cafe"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 360px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#552C61]/90 via-transparent to-transparent flex items-end p-4">
-                <span className="text-[10px] font-mono tracking-widest text-[#FFF8FB]/80 uppercase">
-                  Facedown Phone • 11:42 PM
-                </span>
-              </div>
+            <div className="md:col-span-5 relative h-52 sm:h-56 rounded-2xl overflow-hidden border border-white/20 shadow-xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={profileStep === 3 ? "empty-table" : "phone-fatigue"}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.35 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={profileStep === 3 ? "/images/user-empty-table.jpg" : "/images/intrigue-phone.jpg"}
+                    alt={profileStep === 3 ? "Quiet morning table waiting for real conversation" : "Endless swiping on phone in bed"}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 360px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#552C61]/90 via-transparent to-transparent flex items-end p-4">
+                    <span className="text-[10px] font-mono tracking-widest text-[#FFF8FB]/85 uppercase">
+                      {profileStep === 3 ? "Quiet Morning Table • The Alternative" : "Early Morning Swiping • 7:15 AM"}
+                    </span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>

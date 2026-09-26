@@ -10,27 +10,27 @@ export function HowItWorksSection() {
 
   const stepVisuals = [
     {
-      img: "/images/hero-indian-portrait.jpg",
+      img: "/images/user-journal-cafe.jpg",
       tag: "Self-Reflection",
-      notification: null,
+      notification: "Journaling intent • Values & rhythm",
     },
     {
-      img: "/images/indian-wingmate-portrait.jpg",
+      img: "/images/user-reminder-lockscreen.jpg",
       tag: "Human Dialogue",
-      notification: null,
+      notification: "Gentle reminder • Dedicated Wingmate assigned",
     },
     {
-      img: "/images/intrigue-phone.jpg",
+      img: "/images/user-verified-screen.jpg",
       tag: "Selective Community",
-      notification: "Application Accepted • Welcome to Wingmann",
+      notification: "Profile Verified • Welcome to Wingmann",
     },
     {
-      img: "/images/indian-curated-intro.jpg",
+      img: "/images/user-videocall.jpg",
       tag: "Curated Introduction",
       notification: "Your wingmate wants to introduce you to someone.",
     },
     {
-      img: "/images/indian-real-date.jpg",
+      img: "/images/user-candlelight-date.jpg",
       tag: "The Real Table",
       notification: "Reservation confirmed: Friday 7:30 PM",
     },

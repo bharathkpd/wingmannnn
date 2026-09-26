@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export function RealDateSection() {
   const [confirmed, setConfirmed] = useState(false);
+  const [activePhoto, setActivePhoto] = useState<"candlelight" | "hands">("candlelight");
 
   const stages = [
     { title: "Connection", desc: "Intent verified" },
@@ -59,22 +60,55 @@ export function RealDateSection() {
 
         {/* Cinematic Date Card & Atmosphere Stage */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-4xl mx-auto">
-          {/* Left: Atmospheric Photography */}
-          <div className="lg:col-span-6 relative h-[340px] sm:h-[400px] rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
-            <Image
-              src="/images/indian-real-date.jpg"
-              alt="Warm candlelit date environment at café"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 500px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent flex flex-col justify-end p-6">
-              <span className="text-[10px] font-mono tracking-widest text-emerald-400 uppercase font-medium">
-                Curated Atmosphere • Church Street
-              </span>
-              <h3 className="font-serif italic text-xl text-white mt-1">
-                Quiet corner table. Soft amber light. No screens.
-              </h3>
+          {/* Left: Atmospheric Photography with Interactive Dual View */}
+          <div className="lg:col-span-6 relative h-[360px] sm:h-[420px] rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#171318]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activePhoto}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.4 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={activePhoto === "candlelight" ? "/images/user-candlelight-date.jpg" : "/images/user-hands-coffee.jpg"}
+                  alt={activePhoto === "candlelight" ? "Warm candlelit date environment at café" : "Hands meeting across the table"}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 500px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/30 flex flex-col justify-end p-6">
+                  <span className="text-[10px] font-mono tracking-widest text-emerald-400 uppercase font-medium">
+                    {activePhoto === "candlelight" ? "Curated Atmosphere • Church Street" : "Tactile Connection • Real Table"}
+                  </span>
+                  <h3 className="font-serif italic text-xl text-white mt-1">
+                    {activePhoto === "candlelight"
+                      ? "Quiet corner table. Soft amber light. No screens."
+                      : "Two artisan coffees. Hands touching. Present."}
+                  </h3>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* View Switcher Chips on Top */}
+            <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 p-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15">
+              <button
+                onClick={() => setActivePhoto("candlelight")}
+                className={`px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider transition-colors cursor-pointer ${
+                  activePhoto === "candlelight" ? "bg-[#CC0000] text-white" : "text-white/70 hover:text-white"
+                }`}
+              >
+                Atmosphere
+              </button>
+              <button
+                onClick={() => setActivePhoto("hands")}
+                className={`px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider transition-colors cursor-pointer ${
+                  activePhoto === "hands" ? "bg-[#CC0000] text-white" : "text-white/70 hover:text-white"
+                }`}
+              >
+                Detail
+              </button>
             </div>
           </div>
 
