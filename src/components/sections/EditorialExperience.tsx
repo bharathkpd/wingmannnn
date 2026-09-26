@@ -26,7 +26,7 @@ export function EditorialExperience({ onOpenWaitlist }: EditorialExperienceProps
       title: "Speak to a wingmate",
       quote: "Before introductions, we get to know you.",
       desc: "A brief, thoughtful conversation with an empathetic human matchmaker who takes time to truly understand your intent.",
-      img: "/images/user-reminder-lockscreen.jpg",
+      img: "/images/indian-wingmate-portrait.jpg",
       meta: "Step 02 • Human Guidance",
     },
     {
@@ -34,7 +34,7 @@ export function EditorialExperience({ onOpenWaitlist }: EditorialExperienceProps
       title: "Get accepted",
       quote: "We are super selective. Intentionally.",
       desc: "Every accepted member has verified relationship readiness, emotional maturity, and genuine mutual respect.",
-      img: "/images/user-verified-screen.jpg",
+      img: "/images/hero-indian-portrait.jpg",
       meta: "Step 03 • Selective Community",
     },
     {
@@ -86,7 +86,7 @@ export function EditorialExperience({ onOpenWaitlist }: EditorialExperienceProps
 
           {/* Interactive Timeline Experience */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-10 items-center">
-            {/* Visual Stage with 5-Step Thumbnail Filmstrip */}
+            {/* Visual Stage with 5-Step Real Human Photo Filmstrip */}
             <div className="lg:col-span-6 space-y-3">
               <div className="relative aspect-[4/5] sm:aspect-[1/1] w-full max-w-[400px] mx-auto rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 shadow-xl bg-[#0E0C0D]">
                 <AnimatePresence mode="wait">
@@ -121,7 +121,7 @@ export function EditorialExperience({ onOpenWaitlist }: EditorialExperienceProps
                 </AnimatePresence>
               </div>
 
-              {/* All 5 Step Photos Thumbnail Strip */}
+              {/* All 5 Step Real Photos Thumbnail Strip */}
               <div className="flex items-center justify-center gap-2 max-w-[400px] mx-auto overflow-x-auto no-scrollbar py-0.5">
                 {steps.map((st, i) => (
                   <button
@@ -138,7 +138,7 @@ export function EditorialExperience({ onOpenWaitlist }: EditorialExperienceProps
                       src={st.img}
                       alt={st.title}
                       fill
-                      className="object-cover"
+                      className="object-cover object-center"
                       sizes="52px"
                     />
                     <div className="absolute inset-0 bg-black/20" />

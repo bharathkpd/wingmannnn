@@ -33,8 +33,8 @@ export function EditorialFeelSeen() {
       id: "morning-text",
       title: "One good morning text.",
       subtitle: "A small vibration that sets the tone for your whole day.",
-      img: "/images/user-reminder-lockscreen.jpg",
-      meta: "Morning Thought",
+      img: "/images/user-phone-heart.jpg",
+      meta: "Morning Connection",
     },
     {
       id: "plan-weekend",
@@ -118,7 +118,7 @@ export function EditorialFeelSeen() {
 
           {/* Right Column: Visual Stage with Natural 4:5 Portrait Frame & Thumbnail Strip */}
           <div className="lg:col-span-6 space-y-3 order-1 lg:order-2">
-            <div className="relative w-full aspect-[4/5] max-w-[400px] mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#191517]/10 bg-[#141113]">
+            <div className="relative w-full aspect-[4/5] max-w-[390px] mx-auto rounded-3xl overflow-hidden shadow-2xl border border-[#191517]/10 bg-[#141113]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={moments[activeMoment].id}
@@ -133,7 +133,7 @@ export function EditorialFeelSeen() {
                     alt={moments[activeMoment].title}
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 400px"
+                    sizes="(max-width: 1024px) 100vw, 390px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
                   <div className="absolute bottom-5 left-5 right-5 text-left text-white">
@@ -148,8 +148,8 @@ export function EditorialFeelSeen() {
               </AnimatePresence>
             </div>
 
-            {/* Visual Moments Thumbnail Strip: All 6 photos visible and interactive */}
-            <div className="flex items-center justify-center gap-2 pt-1 max-w-[400px] mx-auto overflow-x-auto no-scrollbar py-0.5">
+            {/* Visual Moments Thumbnail Strip: All 6 real human photos visible and interactive */}
+            <div className="flex items-center justify-center gap-2 pt-1 max-w-[390px] mx-auto overflow-x-auto no-scrollbar py-0.5">
               {moments.map((m, idx) => (
                 <button
                   key={m.id}

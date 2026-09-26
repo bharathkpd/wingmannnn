@@ -88,43 +88,30 @@ export function EditorialIntroducing({ onOpenWaitlist }: EditorialIntroducingPro
             </div>
           </motion.div>
 
-          {/* Right Column: Verified Mobile Product Mockup (Zero Mobile Overflow) */}
+          {/* Right Column: Real-World Date Meeting (Zero Nested Phone Mockups) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.75, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 flex flex-col items-center justify-center w-full max-w-sm mx-auto"
+            className="lg:col-span-6 flex justify-center"
           >
-            {/* Verified Mobile Phone Screen Mockup: Natural 9:16 Aspect Ratio */}
-            <div className="relative w-[210px] sm:w-[250px] aspect-[9/16] rounded-[2.2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border-[5px] sm:border-[6px] border-[#191517] bg-[#FBF8F4]">
+            <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-[#191517]/10 group bg-[#141113]">
               <Image
-                src="/images/user-verified-screen.jpg"
-                alt="Wingmann verified profile screen: You're all set! Profile verified and active"
+                src="/images/indian-real-date.jpg"
+                alt="Two people having a genuine conversation on a real date"
                 fill
-                className="object-cover"
-                sizes="(max-width: 768px) 210px, 250px"
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-103"
+                sizes="(max-width: 768px) 100vw, 380px"
               />
-            </div>
-
-            {/* Human Wingmate Guidance Card Beneath Phone */}
-            <div className="w-full max-w-[270px] p-3 rounded-2xl bg-white/95 border border-[#191517]/8 shadow-sm flex items-center gap-3 mt-3.5">
-              <div className="relative w-10 h-10 rounded-xl overflow-hidden shrink-0 border border-[#8E2432]/20">
-                <Image
-                  src="/images/user-videocall.jpg"
-                  alt="Human Wingmate introduction connection"
-                  fill
-                  className="object-cover"
-                  sizes="40px"
-                />
-              </div>
-              <div className="text-left">
-                <span className="text-[10px] font-mono text-[#8E2432] uppercase tracking-wider block font-semibold">
-                  Personal Wingmate
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+              <div className="absolute bottom-5 left-5 right-5 text-left text-white pointer-events-none">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-white/80 block mb-1">
+                  Curated Introduction • Real Life Meeting
                 </span>
-                <span className="text-[11px] text-[#544E51] font-sans block leading-tight">
-                  Every profile verified before introduction
-                </span>
+                <p className="font-serif italic text-base sm:text-lg font-light drop-shadow">
+                  &ldquo;Introduced for shared intent. Meeting across a real table.&rdquo;
+                </p>
               </div>
             </div>
           </motion.div>
