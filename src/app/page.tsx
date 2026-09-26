@@ -1,115 +1,62 @@
 "use client";
 
 import { useState } from "react";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { EditorialNavbar } from "@/components/EditorialNavbar";
+import { EditorialFooter } from "@/components/EditorialFooter";
 import { WaitlistModal } from "@/components/WaitlistModal";
-import { DownloadModal } from "@/components/DownloadModal";
-import { StoryModal, StoryItem } from "@/components/StoryModal";
 import { LegalModal, LegalDocType } from "@/components/LegalModal";
 import { CookieBanner } from "@/components/CookieBanner";
 
-import { HeroSection } from "@/components/sections/HeroSection";
-import { ProblemSection } from "@/components/sections/ProblemSection";
-import { SwipingSimulator } from "@/components/sections/SwipingSimulator";
-import { WingmateSection } from "@/components/sections/WingmateSection";
-import { CuratedIntroduction } from "@/components/sections/CuratedIntroduction";
-import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
-import { IntentionalVsEndless } from "@/components/sections/IntentionalVsEndless";
-import { RealConversationCall } from "@/components/sections/RealConversationCall";
-import { RealDateSection } from "@/components/sections/RealDateSection";
-import { TrustSection } from "@/components/sections/TrustSection";
-import { ThePromiseSection } from "@/components/sections/ThePromiseSection";
-import { StoriesSection } from "@/components/sections/StoriesSection";
-import { FaqSection } from "@/components/sections/FaqSection";
-import { ClosingSection } from "@/components/sections/ClosingSection";
+import { EditorialHero } from "@/components/sections/EditorialHero";
+import { EditorialIntrigue } from "@/components/sections/EditorialIntrigue";
+import { EditorialFeelSeen } from "@/components/sections/EditorialFeelSeen";
+import { EditorialProblem } from "@/components/sections/EditorialProblem";
+import { EditorialIntroducing } from "@/components/sections/EditorialIntroducing";
+import { EditorialExperience } from "@/components/sections/EditorialExperience";
+import { EditorialClosing } from "@/components/sections/EditorialClosing";
 
 export default function Home() {
   const [waitlistOpen, setWaitlistOpen] = useState(false);
-  const [downloadOpen, setDownloadOpen] = useState(false);
-  const [selectedStory, setSelectedStory] = useState<StoryItem | null>(null);
   const [legalModalType, setLegalModalType] = useState<LegalDocType | null>(null);
   const [cookiePrefsOpen, setCookiePrefsOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-[#F7F2ED] text-[#2B2B2B] relative selection:bg-[#552C61] selection:text-[#FFF8FB]">
-      {/* Navigation */}
-      <Navbar
-        onOpenWaitlist={() => setWaitlistOpen(true)}
-        onOpenDownload={() => setDownloadOpen(true)}
-      />
+    <main className="min-h-screen bg-[#FBF8F4] text-[#191517] relative selection:bg-[#8E2432] selection:text-[#FFFDFB]">
+      {/* 1. Minimal Navigation */}
+      <EditorialNavbar onOpenWaitlist={() => setWaitlistOpen(true)} />
 
-      {/* 1. Hero Section */}
-      <HeroSection
-        onOpenWaitlist={() => setWaitlistOpen(true)}
-        onOpenDownload={() => setDownloadOpen(true)}
-      />
+      {/* Chapter 01: Hero */}
+      <EditorialHero onOpenWaitlist={() => setWaitlistOpen(true)} />
 
-      {/* 2. The Problem Narrative */}
-      <ProblemSection />
+      {/* Chapter 02: Intrigue */}
+      <EditorialIntrigue />
 
-      {/* 3. Interactive Swiping Simulation */}
-      <SwipingSimulator onOpenWaitlist={() => setWaitlistOpen(true)} />
+      {/* Chapter 03: Feel Seen */}
+      <EditorialFeelSeen />
 
-      {/* 4. The Wingmate Concept */}
-      <WingmateSection />
+      {/* Chapter 04: Reflection of the Problem */}
+      <EditorialProblem />
 
-      {/* 5. Curated Connections (Single Introduction Reveal) */}
-      <CuratedIntroduction />
+      {/* Chapter 05: Introducing Wingmann */}
+      <EditorialIntroducing onOpenWaitlist={() => setWaitlistOpen(true)} />
 
-      {/* 6. How It Works (5-Step Sticky Scroll / Timeline) */}
-      <HowItWorksSection />
+      {/* Chapter 06: The Experience */}
+      <EditorialExperience onOpenWaitlist={() => setWaitlistOpen(true)} />
 
-      {/* 7. Intentional vs. Endless (Comparison) */}
-      <IntentionalVsEndless />
+      {/* Chapter 07: Closing Statement & Final CTA */}
+      <EditorialClosing onOpenWaitlist={() => setWaitlistOpen(true)} />
 
-      {/* 8. Real Conversation (Phone Call Simulator) */}
-      <RealConversationCall />
-
-      {/* 9. Real Date (Cinematic Date Atmosphere) */}
-      <RealDateSection />
-
-      {/* 10. Integrity & Trust */}
-      <TrustSection />
-
-      {/* 11. The Promise */}
-      <ThePromiseSection />
-
-      {/* 12. Editorial Stories */}
-      <StoriesSection onSelectStory={(story) => setSelectedStory(story)} />
-
-      {/* 13. Frequently Asked Questions */}
-      <FaqSection />
-
-      {/* 14. Final Closing Section & CTA */}
-      <ClosingSection
-        onOpenWaitlist={() => setWaitlistOpen(true)}
-        onOpenDownload={() => setDownloadOpen(true)}
-      />
-
-      {/* Footer (with fixed Instagram & Twitter & LinkedIn icons + App Download Badges & Callout) */}
-      <Footer
+      {/* Refined Minimal Footer */}
+      <EditorialFooter
         onOpenLegal={(type) => setLegalModalType(type)}
         onOpenCookieSettings={() => setCookiePrefsOpen(true)}
         onOpenWaitlist={() => setWaitlistOpen(true)}
-        onOpenDownload={() => setDownloadOpen(true)}
       />
 
-      {/* Modals & Overlays */}
+      {/* Interactive Overlays */}
       <WaitlistModal
         isOpen={waitlistOpen}
         onClose={() => setWaitlistOpen(false)}
-      />
-
-      <DownloadModal
-        isOpen={downloadOpen}
-        onClose={() => setDownloadOpen(false)}
-        onOpenWaitlist={() => setWaitlistOpen(true)}
-      />
-
-      <StoryModal
-        story={selectedStory}
-        onClose={() => setSelectedStory(null)}
       />
 
       <LegalModal

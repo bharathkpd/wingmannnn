@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 async function verifyWebsite() {
-  console.log('--- Verifying Wingmann Production Website ---');
+  console.log('--- Verifying Wingmann Editorial Website Rebuild ---');
 
   // 1. Fetch homepage
   const res = await fetch('http://localhost:3000');
@@ -11,45 +11,49 @@ async function verifyWebsite() {
   }
   const html = await res.text();
 
-  // 2. Check essential brand and copy elements
+  // 2. Check 7-chapter editorial storytelling requirements
   const keyRequirements = [
     { label: 'Brand Name', text: 'WINGMANN' },
-    { label: 'Brand Tagline', text: 'Date with Intent' },
-    { label: 'Eyebrow', text: 'For people who know what they&#x27;re here for' },
+    { label: 'Brand Tagline', text: 'Date With Intent' },
     { label: 'Hero Headline', text: 'Find someone who is looking for the' },
-    { label: 'Hero Primary CTA', text: 'BEGIN YOUR STORY' },
-    { label: 'Hero Secondary CTA', text: 'EXPLORE WINGMANN' },
-    { label: 'Problem Statement', text: 'Maybe the problem was never' },
-    { label: 'Swiping Simulation', text: 'The Swiping Simulation' },
-    { label: 'Overload Calm Reveal', text: 'Less noise.' },
-    { label: 'Overload Calm Sub', text: 'More intention.' },
-    { label: 'Wingmate Intro', text: 'The Person Behind The Profile' },
-    { label: 'Wingmate Reveal', text: 'That&#x27;s where your' },
-    { label: 'Curated Intro Headline', text: 'Not another match.' },
-    { label: 'Curated Intro Subhead', text: 'An introduction.' },
-    { label: 'How It Works Steps', text: 'Every relationship starts somewhere.' },
-    { label: 'Step 01', text: 'Tell Us Your Story' },
-    { label: 'Step 02', text: 'Meet Your Wingmate' },
-    { label: 'Step 03', text: 'Get Accepted' },
-    { label: 'Step 04', text: 'Meet Your Introductions' },
-    { label: 'Step 05', text: 'Go On A Real Date' },
-    { label: 'Intentional vs Endless', text: 'Endless Swiping vs.' },
-    { label: 'Real Conversation Section', text: 'One Real Conversation' },
-    { label: 'Real Date Section', text: 'This Is Actually Going To Happen.' },
-    { label: 'Trust Section', text: 'Real people.' },
-    { label: 'Trust Section Sub', text: 'Real attention.' },
-    { label: 'The Promise', text: 'The Wingmann Promise' },
-    { label: 'Stories Section', text: 'Stories That Began With Intent.' },
-    { label: 'FAQ Section', text: 'Frequently Asked Questions' },
-    { label: 'Closing Section Headline', text: 'Maybe your person is' },
-    { label: 'Closing Microcopy', text: 'Not for everyone. Just for the serious ones.' },
-    { label: 'Cookie Settings', text: 'Cookie Settings' },
+    { label: 'Hero Accent', text: 'same thing.' },
+    { label: 'Hero Supporting Copy', text: 'Meeting someone is easy. But finding someone who wants the same thing isn’t.' },
+    { label: 'Hero CTA', text: 'Find here' },
+    { label: 'Chapter 02 The Unspoken', text: 'We spend weeks getting to know someone. Before asking the one question that changes everything.' },
+    { label: 'Chapter 02 Typographic Monument', text: 'WHAT ARE YOU ACTUALLY LOOKING FOR?' },
+    { label: 'Chapter 02 Risk', text: 'It’s a risk.' },
+    { label: 'Chapter 03 Prelude', text: 'Because nobody falls for someone all at once.' },
+    { label: 'Chapter 03 Quietly', text: 'It happens quietly.' },
+    { label: 'Chapter 03 Moment 1', text: 'One conversation.' },
+    { label: 'Chapter 03 Moment 2', text: 'One coffee.' },
+    { label: 'Chapter 03 Moment 3', text: 'One phone call.' },
+    { label: 'Chapter 03 Moment 4', text: 'One good morning text.' },
+    { label: 'Chapter 03 Moment 5', text: 'One plan for next weekend.' },
+    { label: 'Chapter 03 Moment 6', text: 'One moment where they start feeling familiar.' },
+    { label: 'Chapter 03 Imagining Future', text: 'you&#x27;ve been imagining a future...' },
+    { label: 'Chapter 03 Without Knowing', text: 'without knowing if they were imagining one too.' },
+    { label: 'Chapter 04 The Problem', text: 'The problem was never' },
+    { label: 'Chapter 04 Different Intentions', text: 'different intentions.' },
+    { label: 'Chapter 04 People Allowed', text: 'People are allowed to want different things.' },
+    { label: 'Chapter 04 Nobody Asks', text: 'It happens because nobody asks.' },
+    { label: 'Chapter 04 After Started', text: 'Only after something has already started.' },
+    { label: 'Chapter 05 So We Built', text: 'So we built' },
+    { label: 'Chapter 05 Wingmann Reveal', text: 'Wingmann.' },
+    { label: 'Chapter 05 Understand & Verify', text: 'we take the time to understand and verify what you&#x27;re genuinely looking for.' },
+    { label: 'Chapter 05 Not More Options', text: 'Not more options. Just the right ones.' },
+    { label: 'Chapter 05 Real Life Meeting', text: 'meet in real life, not just match online.' },
+    { label: 'Chapter 06 Relationship Starts', text: 'Every relationship starts somewhere.' },
+    { label: 'Chapter 06 Step 01', text: 'Tell us about yourself' },
+    { label: 'Chapter 06 Step 02', text: 'Speak to a wingmate' },
+    { label: 'Chapter 06 Step 03', text: 'Get accepted' },
+    { label: 'Chapter 06 Step 04', text: 'Connect with each other' },
+    { label: 'Chapter 06 Step 05', text: 'Meet in real life' },
+    { label: 'Chapter 07 Headline', text: 'The world moves faster.' },
+    { label: 'Chapter 07 Rest is Your Story', text: 'The rest is your story.' },
+    { label: 'Chapter 07 Final CTA', text: 'Find someone' },
     { label: 'Footer Brand', text: 'WINGMANN' },
-    { label: 'Footer Tagline', text: 'DATE WITH INTENT' },
-    { label: 'Instagram Icon Link', text: 'Follow Wingmann on Instagram' },
-    { label: 'Download on App Store', text: 'Download on the' },
-    { label: 'Get it on Google Play', text: 'GET IT ON' },
-    { label: 'Download App Button', text: 'DOWNLOAD APP' },
+    { label: 'Footer Tagline', text: 'Date with Intent' },
+    { label: 'Cookie Settings', text: 'Cookie Settings' },
   ];
 
   let passed = 0;
@@ -64,21 +68,23 @@ async function verifyWebsite() {
 
   console.log(`\nRequirements verified: ${passed}/${keyRequirements.length}`);
 
-  // 3. Verify images rendering from /images
+  // 3. Verify user authentic image assets delivery
   const imageNames = [
-    'hero-indian-moment.jpg',
-    'hero-indian-portrait.jpg',
-    'indian-man-portrait.jpg',
-    'indian-wingmate-portrait.jpg',
-    'indian-curated-intro.jpg',
-    'indian-call-portrait.jpg',
-    'indian-real-date.jpg',
-    'indian-closing-walk.jpg',
-    'intrigue-phone.jpg',
-    'cinematic-coffee.jpg',
+    'user-hero-terrace.jpg',
+    'user-candlelight-date.jpg',
+    'user-hands-coffee.jpg',
+    'user-phone-morning.jpg',
+    'user-empty-table.jpg',
+    'user-journal-cafe.jpg',
+    'user-verified-screen.jpg',
+    'user-reminder-lockscreen.jpg',
+    'user-sofa-cozy.jpg',
+    'user-twilight-walk.jpg',
+    'user-sunset-ridge.jpg',
+    'user-videocall.jpg',
   ];
 
-  console.log('\n--- Verifying Image Assets Delivery ---');
+  console.log('\n--- Verifying Editorial Image Assets Delivery ---');
   let imgPassed = 0;
   for (const img of imageNames) {
     const imgRes = await fetch(`http://localhost:3000/images/${img}`);
@@ -93,9 +99,9 @@ async function verifyWebsite() {
   console.log(`\nImages verified: ${imgPassed}/${imageNames.length}`);
 
   if (passed === keyRequirements.length && imgPassed === imageNames.length) {
-    console.log('\n>>> ALL PRODUCTION QUALITY VERIFICATIONS PASSED 100%! <<<');
+    console.log('\n>>> ALL 7-CHAPTER EDITORIAL PRODUCTION VERIFICATIONS PASSED 100%! <<<');
   } else {
-    console.log('\n>>> Verification finished with minor notes. <<<');
+    console.log('\n>>> Verification finished with notes. <<<');
   }
 }
 

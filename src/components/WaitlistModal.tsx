@@ -66,8 +66,9 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    if (!formData.email.trim() || !formData.email.includes("@")) {
-      setError("Please provide a valid email address.");
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address.");
       return;
     }
 
@@ -75,34 +76,30 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
-    }, 800);
+    }, 900);
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-      {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={handleClose}
-        className="fixed inset-0 bg-[#171318]/70 backdrop-blur-sm"
-      />
-
-      {/* Modal Box */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 16 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 16 }}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-lg bg-[#FFF8FB] rounded-2xl md:rounded-3xl shadow-[0_24px_60px_-12px_rgba(85,44,97,0.35)] border border-[#552C61]/15 p-6 sm:p-10 z-10 overflow-hidden"
+        className="relative w-full max-w-lg rounded-3xl bg-[#FBF8F4] border border-[#191517]/10 p-6 sm:p-10 shadow-2xl overflow-hidden text-left"
       >
+        {/* Subtle Ambient Background Accent */}
+        <div
+          className="pointer-events-none absolute -top-24 -right-24 w-60 h-60 bg-[#8E2432]/10 rounded-full blur-3xl"
+          aria-hidden="true"
+        />
+
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-[#552C61]/60 hover:text-[#552C61] hover:bg-[#552C61]/5 transition-colors cursor-pointer"
+          className="absolute top-5 right-5 p-2 rounded-full text-[#191517]/60 hover:text-[#191517] hover:bg-black/5 transition-colors cursor-pointer"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
@@ -110,41 +107,37 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
 
         {!submitted ? (
           <div>
-            {/* Header with step counter */}
-            <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#552C61]/10">
-              <div className="flex items-center gap-2">
-                <span className="font-serif text-lg font-bold text-[#552C61]">WINGMANN</span>
-                <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#552C61]/10 text-[#552C61] font-medium">
-                  Application
+            {/* Header & Step Tracker */}
+            <div className="mb-6 space-y-3">
+              <div className="flex items-center justify-between text-xs font-mono text-[#8C8488]">
+                <span className="tracking-widest uppercase">
+                  Application • Step {step} of 5
                 </span>
+                <span className="font-semibold text-[#8E2432]">{step * 20}%</span>
               </div>
-              <span className="text-xs font-mono font-medium tracking-wider text-[#7B4F87]">
-                0{step} / 05
-              </span>
+              {/* Progress Track */}
+              <div className="w-full h-1 bg-[#191517]/10 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full bg-[#8E2432]"
+                  initial={false}
+                  animate={{ width: `${step * 20}%` }}
+                  transition={{ duration: 0.3 }}
+                />
+              </div>
             </div>
 
-            {/* Step Progress Bar */}
-            <div className="w-full bg-[#552C61]/10 h-1 rounded-full mb-8 overflow-hidden">
-              <motion.div
-                className="bg-[#552C61] h-full"
-                initial={{ width: "20%" }}
-                animate={{ width: `${(step / 5) * 100}%` }}
-                transition={{ duration: 0.35 }}
-              />
-            </div>
-
-            {/* Error Message */}
+            {/* Error Banner */}
             {error && (
               <motion.div
                 initial={{ opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-6 p-3 rounded-lg bg-[#CC0000]/10 border border-[#CC0000]/20 text-[#CC0000] text-xs font-medium"
+                className="mb-4 p-3 rounded-xl bg-[#8E2432]/10 border border-[#8E2432]/30 text-xs text-[#8E2432] font-sans font-medium"
               >
                 {error}
               </motion.div>
             )}
 
-            {/* Step Content */}
+            {/* Multi-Step Animated Form */}
             <AnimatePresence mode="wait">
               {step === 1 && (
                 <motion.div
@@ -155,13 +148,13 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                   className="space-y-5 text-left"
                 >
                   <div className="space-y-1.5">
-                    <span className="text-[10px] font-mono tracking-widest text-[#7B4F87] uppercase font-bold">
+                    <span className="text-[10px] font-mono tracking-widest text-[#8E2432] uppercase font-bold">
                       01 • First things first
                     </span>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-[#552C61] font-normal leading-snug">
+                    <h3 className="font-serif text-2xl sm:text-3xl text-[#191517] font-normal leading-snug">
                       What should your Wingmate call you?
                     </h3>
-                    <p className="text-xs text-[#2B2B2B]/65 font-sans">
+                    <p className="text-xs text-[#544E51] font-sans">
                       Real names only. We build trust right from the start.
                     </p>
                   </div>
@@ -175,7 +168,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       onKeyDown={(e) => e.key === "Enter" && handleNext()}
-                      className="w-full px-4 py-3.5 rounded-xl border border-[#552C61]/25 bg-white text-[#2B2B2B] text-sm placeholder-[#2B2B2B]/35 focus:border-[#552C61] focus:ring-1 focus:ring-[#552C61] outline-none transition-all font-sans"
+                      className="w-full px-4 py-3.5 rounded-xl border border-[#191517]/20 bg-white text-[#191517] text-sm placeholder-[#191517]/35 focus:border-[#8E2432] focus:ring-1 focus:ring-[#8E2432] outline-none transition-all font-sans"
                     />
                   </div>
                 </motion.div>
@@ -190,13 +183,13 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                   className="space-y-5 text-left"
                 >
                   <div className="space-y-1.5">
-                    <span className="text-[10px] font-mono tracking-widest text-[#7B4F87] uppercase font-bold">
+                    <span className="text-[10px] font-mono tracking-widest text-[#8E2432] uppercase font-bold">
                       02 • Location
                     </span>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-[#552C61] font-normal leading-snug">
+                    <h3 className="font-serif text-2xl sm:text-3xl text-[#191517] font-normal leading-snug">
                       Where are you based?
                     </h3>
-                    <p className="text-xs text-[#2B2B2B]/65 font-sans">
+                    <p className="text-xs text-[#544E51] font-sans">
                       We curate connections within verified urban communities.
                     </p>
                   </div>
@@ -208,8 +201,8 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                         onClick={() => setFormData({ ...formData, city: c })}
                         className={`p-3 rounded-xl border text-xs font-sans font-medium transition-all text-left flex items-center justify-between cursor-pointer ${
                           formData.city === c
-                            ? "bg-[#552C61] text-white border-[#552C61]"
-                            : "bg-white text-[#2B2B2B] border-[#552C61]/20 hover:border-[#552C61]"
+                            ? "bg-[#8E2432] text-white border-[#8E2432]"
+                            : "bg-white text-[#191517] border-[#191517]/15 hover:border-[#8E2432]"
                         }`}
                       >
                         <span>{c}</span>
@@ -229,13 +222,13 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                   className="space-y-5 text-left"
                 >
                   <div className="space-y-1.5">
-                    <span className="text-[10px] font-mono tracking-widest text-[#7B4F87] uppercase font-bold">
+                    <span className="text-[10px] font-mono tracking-widest text-[#8E2432] uppercase font-bold">
                       03 • Relationship Intent
                     </span>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-[#552C61] font-normal leading-snug">
+                    <h3 className="font-serif text-2xl sm:text-3xl text-[#191517] font-normal leading-snug">
                       What are you genuinely looking for?
                     </h3>
-                    <p className="text-xs text-[#2B2B2B]/65 font-sans">
+                    <p className="text-xs text-[#544E51] font-sans">
                       Clarity ensures you never get introduced to someone with conflicting goals.
                     </p>
                   </div>
@@ -260,14 +253,14 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                         onClick={() => setFormData({ ...formData, intent: opt.title })}
                         className={`w-full p-3.5 rounded-xl border text-left transition-all cursor-pointer ${
                           formData.intent === opt.title
-                            ? "bg-[#552C61] text-white border-[#552C61]"
-                            : "bg-white text-[#2B2B2B] border-[#552C61]/20 hover:border-[#552C61]"
+                            ? "bg-[#8E2432] text-white border-[#8E2432]"
+                            : "bg-white text-[#191517] border-[#191517]/15 hover:border-[#8E2432]"
                         }`}
                       >
                         <div className="font-medium text-xs font-sans">{opt.title}</div>
                         <div
                           className={`text-[11px] mt-0.5 font-sans ${
-                            formData.intent === opt.title ? "text-[#FFF8FB]/80" : "text-[#2B2B2B]/60"
+                            formData.intent === opt.title ? "text-white/80" : "text-[#544E51]"
                           }`}
                         >
                           {opt.desc}
@@ -287,13 +280,13 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                   className="space-y-5 text-left"
                 >
                   <div className="space-y-1.5">
-                    <span className="text-[10px] font-mono tracking-widest text-[#7B4F87] uppercase font-bold">
+                    <span className="text-[10px] font-mono tracking-widest text-[#8E2432] uppercase font-bold">
                       04 • Character
                     </span>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-[#552C61] font-normal leading-snug">
+                    <h3 className="font-serif text-2xl sm:text-3xl text-[#191517] font-normal leading-snug">
                       Tell us a little about yourself
                     </h3>
-                    <p className="text-xs text-[#2B2B2B]/65 font-sans">
+                    <p className="text-xs text-[#544E51] font-sans">
                       What fills your weekends? What does a great evening look like to you?
                     </p>
                   </div>
@@ -305,7 +298,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                       placeholder="e.g. I work in product design, love filter coffee, quiet bookshops, and weekend road trips..."
                       value={formData.about}
                       onChange={(e) => setFormData({ ...formData, about: e.target.value })}
-                      className="w-full p-3.5 rounded-xl border border-[#552C61]/25 bg-white text-[#2B2B2B] text-xs placeholder-[#2B2B2B]/35 focus:border-[#552C61] focus:ring-1 focus:ring-[#552C61] outline-none resize-none transition-all font-sans"
+                      className="w-full p-3.5 rounded-xl border border-[#191517]/20 bg-white text-[#191517] text-xs placeholder-[#191517]/35 focus:border-[#8E2432] focus:ring-1 focus:ring-[#8E2432] outline-none resize-none transition-all font-sans"
                     />
                   </div>
                 </motion.div>
@@ -320,13 +313,13 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                   className="space-y-5 text-left"
                 >
                   <div className="space-y-1.5">
-                    <span className="text-[10px] font-mono tracking-widest text-[#7B4F87] uppercase font-bold">
+                    <span className="text-[10px] font-mono tracking-widest text-[#8E2432] uppercase font-bold">
                       05 • Final Step
                     </span>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-[#552C61] font-normal leading-snug">
+                    <h3 className="font-serif text-2xl sm:text-3xl text-[#191517] font-normal leading-snug">
                       Where should we send your invite?
                     </h3>
-                    <p className="text-xs text-[#2B2B2B]/65 font-sans">
+                    <p className="text-xs text-[#544E51] font-sans">
                       We notify you when your city cohort has an opening with your dedicated Wingmate.
                     </p>
                   </div>
@@ -339,10 +332,10 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                       placeholder="name@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl border border-[#552C61]/25 bg-white text-[#2B2B2B] text-sm placeholder-[#2B2B2B]/35 focus:border-[#552C61] focus:ring-1 focus:ring-[#552C61] outline-none transition-all font-sans"
+                      className="w-full px-4 py-3.5 rounded-xl border border-[#191517]/20 bg-white text-[#191517] text-sm placeholder-[#191517]/35 focus:border-[#8E2432] focus:ring-1 focus:ring-[#8E2432] outline-none transition-all font-sans"
                     />
                   </div>
-                  <div className="p-3 bg-[#552C61]/5 rounded-xl text-[11px] text-[#552C61]/80 leading-relaxed font-sans">
+                  <div className="p-3 bg-[#8E2432]/5 rounded-xl text-[11px] text-[#8E2432] leading-relaxed font-sans">
                     <strong>Privacy pledge:</strong> Your profile is never in an open swipe directory. Only your dedicated Wingmate sees your application.
                   </div>
                 </motion.div>
@@ -350,12 +343,12 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
             </AnimatePresence>
 
             {/* Modal Bottom Actions */}
-            <div className="mt-8 pt-4 flex items-center justify-between border-t border-[#552C61]/10">
+            <div className="mt-8 pt-4 flex items-center justify-between border-t border-[#191517]/10">
               {step > 1 ? (
                 <button
                   type="button"
                   onClick={() => setStep((prev) => prev - 1)}
-                  className="text-xs text-[#552C61]/70 hover:text-[#552C61] transition-colors cursor-pointer font-sans"
+                  className="text-xs text-[#544E51] hover:text-[#191517] transition-colors cursor-pointer font-sans"
                 >
                   Back
                 </button>
@@ -367,7 +360,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="btn-primary"
+                  className="btn-editorial-primary text-xs py-3 px-6"
                 >
                   <span>Continue</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -377,7 +370,7 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                   type="button"
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="btn-primary disabled:opacity-50"
+                  className="btn-editorial-primary text-xs py-3 px-6 disabled:opacity-50"
                 >
                   {loading ? (
                     <span>Submitting...</span>
@@ -392,32 +385,32 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
             </div>
           </div>
         ) : (
-          /* Warm on-brand Confirmation State */
+          /* Confirmation State */
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="text-center py-6 space-y-5"
           >
             <div className="space-y-2">
-              <span className="text-[10px] font-mono tracking-widest text-[#7B4F87] uppercase font-bold">
+              <span className="text-[10px] font-mono tracking-widest text-[#8E2432] uppercase font-bold">
                 Application Received
               </span>
-              <h3 className="font-serif text-3xl text-[#552C61] font-normal leading-snug">
+              <h3 className="font-serif text-3xl text-[#191517] font-normal leading-snug">
                 You&apos;re on the list.
               </h3>
-              <p className="font-serif italic text-base sm:text-lg text-[#552C61] max-w-sm mx-auto leading-relaxed">
+              <p className="font-serif italic text-base sm:text-lg text-[#8E2432] max-w-sm mx-auto leading-relaxed">
                 &ldquo;We&apos;ll be in touch when it&apos;s your turn to meet someone worth meeting.&rdquo;
               </p>
             </div>
 
-            <p className="text-xs text-[#2B2B2B]/60 max-w-xs mx-auto leading-relaxed font-sans">
+            <p className="text-xs text-[#544E51] max-w-xs mx-auto leading-relaxed font-sans">
               We review every application manually to ensure genuine intent. Keep an eye on{" "}
-              <strong className="text-[#552C61]">{formData.email}</strong>.
+              <strong className="text-[#191517]">{formData.email}</strong>.
             </p>
 
             <button
               onClick={handleClose}
-              className="px-7 py-3 rounded-full bg-[#552C61] text-[#FFF8FB] text-xs font-sans font-semibold tracking-wider uppercase hover:bg-[#7B4F87] transition-colors cursor-pointer"
+              className="px-7 py-3 rounded-full bg-[#191517] text-[#FFFDFB] text-xs font-sans font-medium tracking-wider uppercase hover:bg-[#8E2432] transition-colors cursor-pointer"
             >
               Done
             </button>
