@@ -33,7 +33,7 @@ export function EditorialFeelSeen() {
       id: "morning-text",
       title: "One good morning text.",
       subtitle: "A small vibration that sets the tone for your whole day.",
-      img: "/images/user-phone-heart.jpg",
+      img: "/images/user-morning-text.jpg",
       meta: "Morning Connection",
     },
     {

@@ -96,7 +96,7 @@ export function EditorialIntroducing({ onOpenWaitlist }: EditorialIntroducingPro
             transition={{ duration: 0.75, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 flex justify-center"
           >
-            <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-[#191517]/10 group bg-[#141113]">
+            <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl group bg-[#141113]">
               <Image
                 src="/images/indian-real-date.jpg"
                 alt="Two people having a genuine conversation on a real date"

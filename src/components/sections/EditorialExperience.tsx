@@ -26,7 +26,7 @@ export function EditorialExperience({ onOpenWaitlist }: EditorialExperienceProps
       title: "Speak to a wingmate",
       quote: "Before introductions, we get to know you.",
       desc: "A brief, thoughtful conversation with an empathetic human matchmaker who takes time to truly understand your intent.",
-      img: "/images/indian-wingmate-portrait.jpg",
+      img: "/images/user-wingmate-session.jpg",
       meta: "Step 02 • Human Guidance",
     },
     {
@@ -34,7 +34,7 @@ export function EditorialExperience({ onOpenWaitlist }: EditorialExperienceProps
       title: "Get accepted",
       quote: "We are super selective. Intentionally.",
       desc: "Every accepted member has verified relationship readiness, emotional maturity, and genuine mutual respect.",
-      img: "/images/hero-indian-portrait.jpg",
+      img: "/images/user-accepted-member.jpg",
       meta: "Step 03 • Selective Community",
     },
     {
